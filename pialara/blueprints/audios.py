@@ -218,16 +218,34 @@ def save_record():
     timestamp = int(round(datetime.now().timestamp()))
     filename = str(current_user.id) + '_' + str(timestamp) + '.wav'
 
-    # # Guardado en S3
-    s3c = boto3.client(
-        's3',
-        region_name='eu-south-2',
-        aws_access_key_id=current_app.config["AWS_ACCESS_KEY_ID"],
-        aws_secret_access_key=current_app.config['AWS_SECRET_ACCESS_KEY'],
-        # aws_session_token=current_app.config["AWS_SESSION_TOKEN"]
-    )
+    # ==========================================
+    # PARCHE LOCAL - S3
+    # Si la clave en .ini es 'mock_key', guardamos en disco y evitamos error AWS.
+    # ==========================================
+    aws_access_key = current_app.config["AWS_ACCESS_KEY_ID"]
 
-    s3c.upload_fileobj(file, current_app.config["BUCKET_NAME"], filename)
+    if aws_access_key == 'mock_key':
+        # MODO LOCAL: Guardar en carpeta static/audios
+        basedir = os.path.abspath(os.path.dirname(__file__))
+        save_path = os.path.join(basedir, '..', 'static', 'audios', filename)
+        
+        # Asegurar que el directorio existe
+        os.makedirs(os.path.dirname(save_path), exist_ok=True)
+
+        file.save(save_path)
+        print(f" [LOCAL] Audio guardado en: {save_path}")
+        
+    else:
+        # MODO PRODUCCIÓN: Subir a AWS S3
+        s3c = boto3.client(
+            's3',
+            region_name='eu-south-2',
+            aws_access_key_id=current_app.config["AWS_ACCESS_KEY_ID"],
+            aws_secret_access_key=current_app.config['AWS_SECRET_ACCESS_KEY'],
+            # aws_session_token=current_app.config["AWS_SESSION_TOKEN"]
+        )
+
+        s3c.upload_fileobj(file, current_app.config["BUCKET_NAME"], filename)
 
     text_id = request.form.get('text_id')
     text_text = request.form.get('text_text')
