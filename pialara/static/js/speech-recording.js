@@ -1,211 +1,273 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-const recordButton = document.querySelector('.record-button');
-const recordedAudio = document.querySelector('#recorded-audio');
-const spinner = document.querySelector('#spinner');
-const canvas = document.querySelector('.visualizer');
-const $sendButton = $("#send-button");
+    const recordButton = document.querySelector('.record-button');
+    const recordedAudio = document.querySelector('#recorded-audio');
+    const spinner = document.querySelector('#spinner');
+    const canvas = document.querySelector('.visualizer');
+    const $sendButton = $("#send-button");
 
-//botones audio
-const speedButtonsContainer = document.querySelector('.speed-buttons');
-const speedButtons = document.querySelectorAll('.speed-button');
-//fin botones audio
+    //botones audio
+    const speedButtonsContainer = document.querySelector('.speed-buttons');
+    const speedButtons = document.querySelectorAll('.speed-button');
+    //fin botones audio
 
-let audioChunks = [];
-let generalBlob = '';
-const canvasCtx = canvas.getContext('2d');
-let audioCtx;
-let duration;
+    let audioChunks = [];
+    let generalBlob = '';
+    const canvasCtx = canvas.getContext('2d');
+    let audioCtx;
+    let duration;
 
-let currentStream; // NUEVO: Variable para guardar el stream del micrófono
+    let currentStream; // NUEVO: Variable para guardar el stream del micrófono
 
-navigator.mediaDevices.getUserMedia({audio: true}).then(stream => {
-    handlerFunction(stream);
-    currentStream = stream; // GUARDAR: Guardamos el stream para usarlo en el click
-    // ¡IMPORTANTE! Se ELIMINA la llamada a visualize(stream) de aquí
-});
+    navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
+        handlerFunction(stream);
+        currentStream = stream; // GUARDAR: Guardamos el stream para usarlo en el click
+        // ¡IMPORTANTE! Se ELIMINA la llamada a visualize(stream) de aquí
+    });
 
-function handlerFunction(stream) {
-    mediaRecorder = new MediaRecorder(stream);
-    mediaRecorder.addEventListener('dataavailable', e => {
-        audioChunks.push(e.data);
+    function handlerFunction(stream) {
+        mediaRecorder = new MediaRecorder(stream);
+        mediaRecorder.addEventListener('dataavailable', e => {
+            audioChunks.push(e.data);
+            if (mediaRecorder.state === 'inactive') {
+                // CORRECCIÓN DE FORMATO: 'audio/mpeg-3' no es estándar, cambiamos a 'audio/wav'
+                let blob = new Blob(audioChunks, { type: 'audio/wav' });
+                const url = URL.createObjectURL(blob);
+                recordedAudio.controls = true;
+                recordedAudio.src = url;
+                generalBlob = blob;
+
+                //botones audio //Mostrar los botones una vez se grabe el audio y funcionen
+                speedButtonsContainer.style.display = 'flex';
+                speedButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const speedFactor = parseFloat(button.dataset.speed); // Obtener la velocidad desde el atributo 'data-speed'
+                        recordedAudio.playbackRate = speedFactor;
+                    });
+                })
+                //fin botones audio
+            }
+        });
+    }
+
+    recordButton.addEventListener('click', () => {
         if (mediaRecorder.state === 'inactive') {
-            // CORRECCIÓN DE FORMATO: 'audio/mpeg-3' no es estándar, cambiamos a 'audio/wav'
-            let blob = new Blob(audioChunks, {type: 'audio/wav'});
-            const url = URL.createObjectURL(blob);
-            recordedAudio.controls = true;
-            recordedAudio.src = url;
-            generalBlob = blob;
+            // --- COMIENZO DEL PARCHE PARA SAFARI/iOS ---
+            if (!audioCtx) {
+                audioCtx = new AudioContext();
+            }
+            // REANUDAR: Si el contexto está suspendido (típico en iOS), lo reanudamos
+            if (audioCtx.state === 'suspended' && audioCtx.resume) {
+                audioCtx.resume();
+            }
+            // Llamar a visualize(currentStream) aquí, dentro del gesto del usuario
+            if (currentStream) {
+                visualize(currentStream);
+            }
+            // --- FIN DEL PARCHE PARA SAFARI/iOS ---
 
-            //botones audio //Mostrar los botones una vez se grabe el audio y funcionen
-            speedButtonsContainer.style.display = 'flex';
-            speedButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const speedFactor = parseFloat(button.dataset.speed); // Obtener la velocidad desde el atributo 'data-speed'
-                    recordedAudio.playbackRate = speedFactor;
-                  });
-            })
-            //fin botones audio
+            console.log('Recording started.');
+            $sendButton.hide();
+            recordButton.classList.add('recording');
+            canvas.style.display = 'block';
+            recordedAudio.controls = false;
+            audioChunks = [];
+            mediaRecorder.start();
+            duration = new Date();
+        } else if (mediaRecorder.state === 'recording') {
+            canvas.style.display = 'none';
+            console.log('Recording stopped.');
+            recordButton.classList.remove('recording');
+            $sendButton.show();
+            mediaRecorder.stop();
+            duration = parseInt((new Date() - duration) / 1000);
         }
     });
-}
 
-recordButton.addEventListener('click', () => {
-    if (mediaRecorder.state === 'inactive') {
-        // --- COMIENZO DEL PARCHE PARA SAFARI/iOS ---
+    $sendButton.on('click', () => {
+        spinner.removeAttribute('hidden');
+
+        var form = new FormData();
+        form.append('file', generalBlob);
+        $sendButton
+            .attr('disabled', true)
+            .text('espere...');
+        form.append('duration', duration);
+
+        var text_id_element = document.getElementById('syllabus-id');
+        var text_text_element = document.getElementById('syllabus-text');
+
+        var text_id, text_text;
+        if (text_id_element) {
+            // Cogemos el texto desde una etiqueta
+            text_id = text_id_element.innerHTML;
+            form.append('text_id', text_id);
+            // Recogemos el texto del párrafo
+            text_text = text_text_element.innerHTML
+        } else {
+            // Recogemos el texto del textarea, el usuario lo ha tecleado
+            text_text = text_text_element.value
+        }
+
+        var text_tag = document.getElementById('syllabus-tag').innerHTML;
+        var text_type = document.getElementById('syllabus-type').innerHTML;
+
+        form.append('text_text', text_text)
+        form.append('text_tag', text_tag)
+        form.append('text_type', text_type)
+
+        $.ajax({
+            type: 'POST',
+            url: '/audios/save-record',
+            data: form,
+            cache: false,
+            processData: false,
+            contentType: false,
+        }).done(function (data) {
+            $sendButton
+                .hide()
+                .attr('disabled', false)
+                .text('espere...');
+
+            recordedAudio.controls = false;
+
+            // Preparar el contenido del modal de valoración
+            const ratingTemplate = document.getElementById('rating-template');
+            let swalContent = null;
+
+            if (ratingTemplate) {
+                const ratingContent = ratingTemplate.cloneNode(true);
+                ratingContent.style.display = 'block';
+                ratingContent.removeAttribute('id'); // Evitar IDs duplicados en el DOM visible
+
+                const stars = ratingContent.querySelectorAll('.star-rating i');
+                const feedback = ratingContent.querySelector('#rating-feedback');
+
+                // Lógica de interacción con las estrellas
+                stars.forEach(star => {
+                    // Hover effect
+                    star.addEventListener('mouseenter', () => {
+                        const value = parseInt(star.dataset.value);
+                        stars.forEach(s => {
+                            if (parseInt(s.dataset.value) <= value) {
+                                s.classList.add('hovered');
+                            } else {
+                                s.classList.remove('hovered');
+                            }
+                        });
+                    });
+
+                    // Remove hover effect on mouse leave (from the container, handled individually here for simplicity)
+                    star.addEventListener('mouseleave', () => {
+                        stars.forEach(s => s.classList.remove('hovered'));
+                    });
+
+                    // Click effect and save
+                    star.addEventListener('click', () => {
+                        const value = parseInt(star.dataset.value);
+
+                        // Visual update (permanent selection)
+                        stars.forEach(s => {
+                            s.classList.remove('selected'); // Reset previous selection
+                            if (parseInt(s.dataset.value) <= value) {
+                                s.classList.add('selected');
+                            }
+                        });
+
+                        // Enviar valoración al backend
+                        if (data.audio_id) {
+                            $.post('/audios/save-rating', {
+                                audio_id: data.audio_id,
+                                rating: value
+                            }).done(function (res) {
+                                if (res.status === 'ok') {
+                                    feedback.style.display = 'block';
+                                    // Opcional: Deshabilitar estrellas tras votar
+                                }
+                            });
+                        }
+                    });
+                });
+                swalContent = ratingContent;
+            }
+
+            swal({
+                title: data.message || '',
+                content: swalContent,
+                icon: data.status === 'ok' ? 'success' : 'error',
+                buttons: {
+                    audio: {
+                        text: 'Grabar otro audio',
+                        value: 'grabar'
+                    },
+                },
+            }).then(value => {
+                if (value === "grabar")
+                    window.location.reload()
+            })
+        }).fail(e => {
+            swal({
+                title: 'Error',
+                icon: 'error',
+                text: 'Ha habido un error al subir el audio. Por favor, reinicie el navegador y reinténtlo de nuevo.',
+            })
+        });
+    })
+
+    function visualize(stream) {
+        // La inicialización/reanudación de audioCtx se mueve al click del botón
+        // para cumplir con las políticas de iOS.
         if (!audioCtx) {
             audioCtx = new AudioContext();
         }
-        // REANUDAR: Si el contexto está suspendido (típico en iOS), lo reanudamos
-        if (audioCtx.state === 'suspended' && audioCtx.resume) {
-            audioCtx.resume();
-        }
-        // Llamar a visualize(currentStream) aquí, dentro del gesto del usuario
-        if (currentStream) {
-            visualize(currentStream);
-        }
-        // --- FIN DEL PARCHE PARA SAFARI/iOS ---
 
-        console.log('Recording started.');
-        $sendButton.hide();
-        recordButton.classList.add('recording');
-        canvas.style.display = 'block';
-        recordedAudio.controls = false;
-        audioChunks = [];
-        mediaRecorder.start();
-        duration = new Date();
-    } else if (mediaRecorder.state === 'recording') {
-        canvas.style.display = 'none';
-        console.log('Recording stopped.');
-        recordButton.classList.remove('recording');
-        $sendButton.show();
-        mediaRecorder.stop();
-        duration = parseInt((new Date() - duration) / 1000);
-    }
-});
+        const source = audioCtx.createMediaStreamSource(stream);
 
-$sendButton.on('click', () => {
-    spinner.removeAttribute('hidden');
+        const analyser = audioCtx.createAnalyser();
+        // ... (resto de la función visualize sin cambios)
+        analyser.fftSize = 2048;
+        const bufferLength = analyser.frequencyBinCount;
+        const dataArray = new Uint8Array(bufferLength);
 
-    var form = new FormData();
-    form.append('file', generalBlob);
-    $sendButton
-        .attr('disabled', true)
-        .text('espere...');
-    form.append('duration', duration);
+        source.connect(analyser);
+        //analyser.connect(audioCtx.destination);
 
-    var text_id_element = document.getElementById('syllabus-id');
-    var text_text_element = document.getElementById('syllabus-text');
-    
-    var text_id, text_text;
-    if (text_id_element) {
-        // Cogemos el texto desde una etiqueta
-        text_id = text_id_element.innerHTML;
-        form.append('text_id', text_id);
-        // Recogemos el texto del párrafo
-        text_text = text_text_element.innerHTML
-    } else {
-        // Recogemos el texto del textarea, el usuario lo ha tecleado
-        text_text = text_text_element.value
-    }
+        draw();
 
-    var text_tag = document.getElementById('syllabus-tag').innerHTML;
-    var text_type = document.getElementById('syllabus-type').innerHTML;
+        function draw() {
+            const WIDTH = canvas.width;
+            const HEIGHT = canvas.height;
 
-    form.append('text_text', text_text)
-    form.append('text_tag', text_tag)
-    form.append('text_type', text_type)
+            requestAnimationFrame(draw);
 
-    $.ajax({
-        type: 'POST',
-        url: '/audios/save-record',
-        data: form,
-        cache: false,
-        processData: false,
-        contentType: false,
-    }).done(function (data) {
-        $sendButton
-            .hide()
-            .attr('disabled', false)
-            .text('espere...');
+            analyser.getByteTimeDomainData(dataArray);
 
-        recordedAudio.controls = false;
-        swal({
-            title: data.message || '',
-            icon: data.status === 'ok' ? 'success' : 'error',
-            buttons: {
-                audio: {
-                    text: 'Grabar otro audio',
-                    value: 'grabar'
-                },
-            },
-        }).then(value => {
-            if (value === "grabar")
-                window.location.reload()
-        })
-    }).fail(e => {
-        swal({
-            title: 'Error',
-            icon: 'error',
-            text: 'Ha habido un error al subir el audio. Por favor, reinicie el navegador y reinténtlo de nuevo.',
-        })
-    });
-})
+            canvasCtx.fillStyle = 'rgb(255, 255, 255)';
+            canvasCtx.fillRect(0, 0, WIDTH, HEIGHT);
 
-function visualize(stream) {
-    // La inicialización/reanudación de audioCtx se mueve al click del botón
-    // para cumplir con las políticas de iOS.
-    if (!audioCtx) {
-        audioCtx = new AudioContext();
-    }
+            canvasCtx.lineWidth = 2;
+            canvasCtx.strokeStyle = 'rgb(249, 81, 96, 255)';
 
-    const source = audioCtx.createMediaStreamSource(stream);
+            canvasCtx.beginPath();
 
-    const analyser = audioCtx.createAnalyser();
-// ... (resto de la función visualize sin cambios)
-    analyser.fftSize = 2048;
-    const bufferLength = analyser.frequencyBinCount;
-    const dataArray = new Uint8Array(bufferLength);
+            let sliceWidth = (WIDTH * 1.0) / bufferLength;
+            let x = 0;
 
-    source.connect(analyser);
-    //analyser.connect(audioCtx.destination);
+            for (let i = 0; i < bufferLength; i++) {
+                let v = dataArray[i] / 128.0;
+                let y = (v * HEIGHT) / 2;
 
-    draw();
+                if (i === 0) {
+                    canvasCtx.moveTo(x, y);
+                } else {
+                    canvasCtx.lineTo(x, y);
+                }
 
-    function draw() {
-        const WIDTH = canvas.width;
-        const HEIGHT = canvas.height;
-
-        requestAnimationFrame(draw);
-
-        analyser.getByteTimeDomainData(dataArray);
-
-        canvasCtx.fillStyle = 'rgb(255, 255, 255)';
-        canvasCtx.fillRect(0, 0, WIDTH, HEIGHT);
-
-        canvasCtx.lineWidth = 2;
-        canvasCtx.strokeStyle = 'rgb(249, 81, 96, 255)';
-
-        canvasCtx.beginPath();
-
-        let sliceWidth = (WIDTH * 1.0) / bufferLength;
-        let x = 0;
-
-        for (let i = 0; i < bufferLength; i++) {
-            let v = dataArray[i] / 128.0;
-            let y = (v * HEIGHT) / 2;
-
-            if (i === 0) {
-                canvasCtx.moveTo(x, y);
-            } else {
-                canvasCtx.lineTo(x, y);
+                x += sliceWidth;
             }
 
-            x += sliceWidth;
+            canvasCtx.lineTo(canvas.width, canvas.height / 2);
+            canvasCtx.stroke();
         }
-
-        canvasCtx.lineTo(canvas.width, canvas.height / 2);
-        canvasCtx.stroke();
     }
-}
 })

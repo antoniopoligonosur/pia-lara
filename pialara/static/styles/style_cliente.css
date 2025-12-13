@@ -477,3 +477,39 @@ div.container-paginacion {
 }
 
 /*# sourceMappingURL=style_cliente.css.map */
+
+/* Sistema de Valoración (Rating) */
+.swal-content__rating {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.rating-label {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  display: block;
+  font-weight: bold;
+  color: #333;
+}
+
+.star-rating {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.star-rating i {
+  font-size: 2rem;
+  color: #e4e5e9;
+  cursor: pointer;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.star-rating i:hover {
+  transform: scale(1.2);
+}
+
+.star-rating i.hovered,
+.star-rating i.selected {
+  color: #ffc107;
+}

@@ -53,6 +53,21 @@
         </button>
     </section>
 
+    <!-- Template para el modal de valoración (Oculto) -->
+    <div id="rating-template" style="display: none;">
+        <div class="swal-content__rating">
+            <span class="rating-label">¿Cómo de difícil te ha sido pronunciar este texto?</span>
+            <div class="star-rating">
+                <i class="bi bi-star-fill" data-value="1"></i>
+                <i class="bi bi-star-fill" data-value="2"></i>
+                <i class="bi bi-star-fill" data-value="3"></i>
+                <i class="bi bi-star-fill" data-value="4"></i>
+                <i class="bi bi-star-fill" data-value="5"></i>
+            </div>
+            <p id="rating-feedback" style="display: none; color: green; margin-top: 10px; font-weight: bold;">¡Valoración guardada!</p>
+        </div>
+    </div>
+
     <script src="https://unpkg.com/sweetalert@2.1.2/dist/sweetalert.min.js"></script>
     <script src="{{ url_for('static', filename='js/speech-synthesis.js') }}"></script>
     <script src="{{ url_for('static', filename='js/speech-recording.js') }}"></script>

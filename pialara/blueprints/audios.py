@@ -301,9 +301,37 @@ def save_record():
 
     data = {
         "status": 'ok',
-        "message": "El audio ha sido almacenado correctamente."
+        "message": "El audio ha sido almacenado correctamente.",
+        "audio_id": str(resultAudio.inserted_id)
     }
     return jsonify(data)
+
+@bp.route('/save-rating', methods=['POST'])
+@login_required
+def save_rating():
+    audio_id = request.form.get('audio_id')
+    rating = request.form.get('rating')
+
+    if not audio_id or not rating:
+        return jsonify({"status": "error", "message": "Faltan datos"}), 400
+
+    try:
+        rating = int(rating)
+        if not (1 <= rating <= 5):
+            raise ValueError("Valoración fuera de rango")
+    except ValueError:
+        return jsonify({"status": "error", "message": "Valoración inválida"}), 400
+
+    audio = Audios()
+    result = audio.update_one(
+        {"_id": ObjectId(audio_id)},
+        {"$set": {"valoracion": rating}}
+    )
+
+    if result.modified_count > 0:
+        return jsonify({"status": "ok", "message": "Valoración guardada"})
+    else:
+        return jsonify({"status": "error", "message": "No se pudo guardar la valoración"}), 500
 
 @bp.route('/client-tag', methods=['POST'])
 @login_required
