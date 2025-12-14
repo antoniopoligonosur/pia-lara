@@ -26,6 +26,7 @@ body {
   max-width: 600px;
   margin-inline: auto;
 }
+
 .header ul {
   display: flex;
   justify-content: space-between;
@@ -33,21 +34,26 @@ body {
   padding: 1rem;
   margin: 0;
 }
+
 .header ul li {
   list-style: none;
 }
+
 .header ul li.active a {
   color: #629ff4;
   border-bottom: 2px solid #629ff4;
 }
+
 .header ul a {
   color: #333;
   text-decoration: none;
   font-size: 20px;
 }
+
 .header h1 {
   margin: 0;
 }
+
 .header__button {
   display: inline-block;
   height: auto;
@@ -62,6 +68,7 @@ body {
   height: auto;
   display: block;
 }
+
 .header__empty {
   width: 40px;
 }
@@ -120,7 +127,8 @@ body {
   color: #00ff00;
 }
 
-body.contrast-1 a, body.contrast-1 button,
+body.contrast-1 a,
+body.contrast-1 button,
 body.contrast-2 a,
 body.contrast-2 button,
 body.contrast-3 a,
@@ -136,6 +144,7 @@ body.contrast-3 button {
   display: flex;
   justify-content: center;
 }
+
 .tags-form__input {
   font-family: inherit;
   font-size: inherit;
@@ -144,6 +153,7 @@ body.contrast-3 button {
   border: 1px solid #b7b7b7;
   border-right: none;
 }
+
 .tags-form__button {
   font-family: inherit;
   font-size: inherit;
@@ -175,8 +185,8 @@ body.contrast-3 button {
 
 .tags-container .tag.button,
 .tags-container .btn {
-  margin: 0.4rem 0.6rem; 
-  
+  margin: 0.4rem 0.6rem;
+
 }
 
 
@@ -192,6 +202,7 @@ body.contrast-3 button {
   border-radius: 1rem;
   box-shadow: 0 0 18px 3px rgba(0, 0, 0, 0.2);
 }
+
 .syllabus__header {
   padding: 0.5rem 1rem;
   width: 100%;
@@ -201,10 +212,12 @@ body.contrast-3 button {
   text-align: center;
   margin-bottom: 1rem;
 }
+
 .syllabus__header h2 {
   margin: 0;
   font-size: 1rem;
 }
+
 .syllabus__buttons {
   width: 100%;
   display: flex;
@@ -212,20 +225,24 @@ body.contrast-3 button {
   padding-inline: 1rem;
   justify-content: center;
 }
-.syllabus__buttons > * {
+
+.syllabus__buttons>* {
   width: 50%;
 }
+
 .syllabus__text {
   font-size: 2.5rem;
   text-align: center;
   width: 100%;
   padding-inline: 1rem;
 }
+
 .syllabus__text p,
 .syllabus__text textarea {
   margin-block: 1rem;
   transition: margin 500ms;
 }
+
 .syllabus__text p.hide-syllabus-text,
 .syllabus__text textarea.hide-syllabus-text {
   height: 0;
@@ -233,6 +250,7 @@ body.contrast-3 button {
   margin: 0;
   margin-bottom: 1rem;
 }
+
 .syllabus__text textarea {
   margin-block: 1rem;
   width: 100%;
@@ -268,22 +286,28 @@ body.contrast-3 button {
   animation-duration: 2s;
   cursor: pointer;
 }
+
 .record-button:hover {
   box-shadow: 0 0 24px 7px rgba(0, 0, 0, 0.3);
   transform: scale(1.1);
 }
+
 .record-button svg {
   display: block;
 }
+
 .record-button svg.svg-stop {
   display: none;
 }
+
 .record-button.recording {
   animation-name: record-button-animation;
 }
+
 .record-button.recording .svg-stop {
   display: block;
 }
+
 .record-button.recording .svg-record {
   display: none;
 }
@@ -297,13 +321,16 @@ body.contrast-3 button {
   0% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(1.1);
   }
+
   100% {
     transform: scale(1);
   }
 }
+
 .visualizer {
   display: none;
 }
@@ -317,8 +344,10 @@ body.contrast-3 button {
 
 /* Estilo para el contenedor */
 div.pagination-container {
-  text-align: center; /* Centra los elementos */
-  margin: 10px 0; /* Agrega un poco de margen alrededor */
+  text-align: center;
+  /* Centra los elementos */
+  margin: 10px 0;
+  /* Agrega un poco de margen alrededor */
 }
 
 div.container-paginacion {
@@ -331,12 +360,14 @@ div.container-paginacion {
   background-color: gainsboro;
   color: black;
   padding: .3rem .8rem;
-  text-align: center; /* Centra el contenido horizontalmente */
+  text-align: center;
+  /* Centra el contenido horizontalmente */
   border-radius: 20%;
 }
 
 .paginacion:hover {
-  background-color: grey; /* Color de fondo al hacer hover */
+  background-color: grey;
+  /* Color de fondo al hacer hover */
   color: inherit;
 }
 
@@ -350,8 +381,10 @@ div.container-paginacion {
 
 /* Estilo para los enlaces */
 .enl_pag {
-  text-decoration: none; /* Elimina el subrayado del enlace */
-  color: inherit; /* Usa el color de texto del elemento padre */
+  text-decoration: none;
+  /* Elimina el subrayado del enlace */
+  color: inherit;
+  /* Usa el color de texto del elemento padre */
 }
 
 .accessibility-bar button {
@@ -365,47 +398,48 @@ div.container-paginacion {
 }
 
 body.contrast-1 .button {
-    background-color: #ffff00;
-    color: #000;
-    border-color: #000;
-  }
-  
+  background-color: #ffff00;
+  color: #000;
+  border-color: #000;
+}
+
 body.contrast-1 .button:hover,
 .accessibility-bar button.contrast-3:hover {
-    background-color: #000;
-    color: #ffff00;
-    border-color: #ffff00;
-  }
+  background-color: #000;
+  color: #ffff00;
+  border-color: #ffff00;
+}
 
 body.contrast-2 .button {
-    background-color: #0000ff;
-    color: #fff;
-    border-color: #fff;
-  }
-  
+  background-color: #0000ff;
+  color: #fff;
+  border-color: #fff;
+}
+
 body.contrast-2 .button:hover,
 .accessibility-bar button.contrast-2:hover {
   background-color: #fff;
   color: #0000ff;
   border-color: #0000ff;
-  }
+}
 
 body.contrast-3 .button {
   background-color: #00ff00;
   color: #000;
   border-color: #000;
-  }
-  
+}
+
 body.contrast-3 .button:hover,
 .accessibility-bar button.contrast-3:hover {
   background-color: #000;
   color: #00ff00;
   border-color: #00ff00;
-  }
+}
 
 /*botones audio*/
 .speed-buttons {
-  display: none; /* Ocultar los botones inicialmente */
+  display: none;
+  /* Ocultar los botones inicialmente */
   /*margin-top: 10px; /* Ajustar según sea necesario */
 }
 
@@ -418,14 +452,17 @@ body.contrast-3 .button:hover,
   border-radius: 5px;
   cursor: pointer;
 }
+
 .speed-button:hover {
-  background-color: #45a049; 
+  background-color: #45a049;
 }
 
 /* Estilo para el contenedor */
 div.pagination-container {
-  text-align: center; /* Centra los elementos */
-  margin: 10px 0; /* Agrega un poco de margen alrededor */
+  text-align: center;
+  /* Centra los elementos */
+  margin: 10px 0;
+  /* Agrega un poco de margen alrededor */
 }
 
 div.container-paginacion {
@@ -435,45 +472,61 @@ div.container-paginacion {
 
 /* Estilo para los formularios y enlaces */
 .paginacion {
-  display: inline-block; /* Muestra los elementos en línea */
-  margin-right: 0.5%; /* Espaciado entre elementos */
+  display: inline-block;
+  /* Muestra los elementos en línea */
+  margin-right: 0.5%;
+  /* Espaciado entre elementos */
   margin-bottom: 0.5%;
 
-  width: 30px; /* Ancho del cuadrado */
-  height: 30px; /* Alto del cuadrado */
-  line-height: 30px; /* Centra el contenido verticalmente */
-  text-align: center; /* Centra el contenido horizontalmente */
-  border: 1px solid #ddd; /* Borde opcional */
+  width: 30px;
+  /* Ancho del cuadrado */
+  height: 30px;
+  /* Alto del cuadrado */
+  line-height: 30px;
+  /* Centra el contenido verticalmente */
+  text-align: center;
+  /* Centra el contenido horizontalmente */
+  border: 1px solid #ddd;
+  /* Borde opcional */
   border-radius: 20%;
 }
 
 .paginacion:hover {
-  background-color: grey; /* Color de fondo al hacer hover */
-  color: 
+  background-color: grey;
+  /* Color de fondo al hacer hover */
+  color:
 }
 
-.pag-actual{
+.pag-actual {
   background-color: #333;
 }
 
-.b-actual{
+.b-actual {
   color: white;
 }
 
 /* Estilo para los botones dentro de los formularios */
 #pagina {
-  background: none; /* Elimina el fondo predeterminado */
-  border: none; /* Elimina el borde predeterminado */
-  padding: 0; /* Elimina el relleno predeterminado */
-  margin: 0; /* Elimina los márgenes predeterminados */
-  font: inherit; /* Utiliza la fuente del elemento padre */
-  cursor: pointer; /* Cambia el cursor para indicar que es clickeable */
+  background: none;
+  /* Elimina el fondo predeterminado */
+  border: none;
+  /* Elimina el borde predeterminado */
+  padding: 0;
+  /* Elimina el relleno predeterminado */
+  margin: 0;
+  /* Elimina los márgenes predeterminados */
+  font: inherit;
+  /* Utiliza la fuente del elemento padre */
+  cursor: pointer;
+  /* Cambia el cursor para indicar que es clickeable */
 }
 
 /* Estilo para los enlaces */
 .enl_pag {
-  text-decoration: none; /* Elimina el subrayado del enlace */
-  color: inherit; /* Usa el color de texto del elemento padre */
+  text-decoration: none;
+  /* Elimina el subrayado del enlace */
+  color: inherit;
+  /* Usa el color de texto del elemento padre */
 }
 
 /*# sourceMappingURL=style_cliente.css.map */
@@ -490,6 +543,15 @@ div.container-paginacion {
   display: block;
   font-weight: bold;
   color: #333;
+}
+
+.rating-sub-label {
+  font-size: 1rem;
+  color: #666;
+  display: block;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  font-weight: bold;
 }
 
 .star-rating {

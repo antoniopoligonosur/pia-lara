@@ -1,74 +1,78 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-    <header class="header">
-        <h1 class="text-center">Grabar mi audio</h1>
-        <br />
+<header class="header">
+    <h1 class="text-center">Grabar mi audio</h1>
+    <br />
+</header>
+
+<section class="syllabus m-auto">
+    <header class="syllabus__header">
+        <h2>Grabar mi audio</h2>
     </header>
 
-    <section class="syllabus m-auto">
-        <header class="syllabus__header">
-            <h2>Grabar mi audio</h2>
-        </header>
-
-        <section class="syllabus__text" id="syllabus-collapse">
-            <p class="hide-syllabus-text" id="syllabus-tag">{{ current_user.email }}</p>
-            <p class="hide-syllabus-text" id="syllabus-type">frase</p>
-            <textarea id="syllabus-text" placeholder="Escribe aquí tu frase"></textarea>
-        </section>
+    <section class="syllabus__text" id="syllabus-collapse">
+        <p class="hide-syllabus-text" id="syllabus-tag">{{ current_user.email }}</p>
+        <p class="hide-syllabus-text" id="syllabus-type">frase</p>
+        <textarea id="syllabus-text" placeholder="Escribe aquí tu frase"></textarea>
     </section>
+</section>
 
-    <section class="audio">
-        <!--botones audio-->
-       
-        <!--fin botones audio-->
-        <canvas class="visualizer rounded" height="60px"></canvas>
-        <audio src="" id="recorded-audio"></audio>
+<section class="audio">
+    <!--botones audio-->
 
-        <button class="record-button" id="record-button">
-            <svg width="29" height="28" viewBox="0 0 29 28">
-                <defs>
-                    <path id="mic-path13"
-                          d="M9.333 18.667A4.68 4.68 0 0 0 14 14V4.667A4.68 4.68 0 0 0 9.333 0a4.68 4.68 0 0 0-4.666 4.667V14a4.68 4.68 0 0 0 4.666 4.667zM7 4.667a2.34 2.34 0 0 1 2.333-2.334 2.34 2.34 0 0 1 2.334 2.334V14a2.34 2.34 0 0 1-2.334 2.333A2.34 2.34 0 0 1 7 14V4.667zm11.667 7V14c0 4.783-3.617 8.633-8.167 9.217v2.45H14c.7 0 1.167.466 1.167 1.166S14.7 28 14 28H4.667c-.7 0-1.167-.467-1.167-1.167s.467-1.166 1.167-1.166h3.5v-2.45C3.617 22.633 0 18.667 0 14v-2.333c0-.7.467-1.167 1.167-1.167s1.166.467 1.166 1.167V14c0 3.85 3.15 7 7 7s7-3.15 7-7v-2.333c0-.7.467-1.167 1.167-1.167s1.167.467 1.167 1.167z"></path>
-                </defs>
-                <g fill="none" fill-rule="evenodd" transform="translate(5)">
-                    <mask id="mic-mask13" fill="#fff">
-                        <use xlink:href="#mic-path13"></use>
-                    </mask>
+    <!--fin botones audio-->
+    <canvas class="visualizer rounded" height="60px"></canvas>
+    <audio src="" id="recorded-audio"></audio>
+
+    <button class="record-button" id="record-button">
+        <svg width="29" height="28" viewBox="0 0 29 28">
+            <defs>
+                <path id="mic-path13"
+                    d="M9.333 18.667A4.68 4.68 0 0 0 14 14V4.667A4.68 4.68 0 0 0 9.333 0a4.68 4.68 0 0 0-4.666 4.667V14a4.68 4.68 0 0 0 4.666 4.667zM7 4.667a2.34 2.34 0 0 1 2.333-2.334 2.34 2.34 0 0 1 2.334 2.334V14a2.34 2.34 0 0 1-2.334 2.333A2.34 2.34 0 0 1 7 14V4.667zm11.667 7V14c0 4.783-3.617 8.633-8.167 9.217v2.45H14c.7 0 1.167.466 1.167 1.166S14.7 28 14 28H4.667c-.7 0-1.167-.467-1.167-1.167s.467-1.166 1.167-1.166h3.5v-2.45C3.617 22.633 0 18.667 0 14v-2.333c0-.7.467-1.167 1.167-1.167s1.166.467 1.166 1.167V14c0 3.85 3.15 7 7 7s7-3.15 7-7v-2.333c0-.7.467-1.167 1.167-1.167s1.167.467 1.167 1.167z">
+                </path>
+            </defs>
+            <g fill="none" fill-rule="evenodd" transform="translate(5)">
+                <mask id="mic-mask13" fill="#fff">
                     <use xlink:href="#mic-path13"></use>
-                    <g fill="#FF4F5E" mask="url(#mic-mask13)">
-                        <path d="M-5 0h28v28H-5z"></path>
-                    </g>
+                </mask>
+                <use xlink:href="#mic-path13"></use>
+                <g fill="#FF4F5E" mask="url(#mic-mask13)">
+                    <path d="M-5 0h28v28H-5z"></path>
                 </g>
-            </svg>
-        </button>
-    </section>
+            </g>
+        </svg>
+    </button>
+</section>
 
-    <section class="bottom">
-        <button class="button send-button" id="send-button">
-            <div hidden id="spinner" class="spinner-border spinner-border-sm" role="status">
-                <span class="sr-only"></span>
-            </div>
-            Enviar
-        </button>
-    </section>
-
-    <!-- Template para el modal de valoración (Oculto) -->
-    <div id="rating-template" style="display: none;">
-        <div class="swal-content__rating">
-            <span class="rating-label">¿Cómo de difícil te ha sido pronunciar este texto?</span>
-            <div class="star-rating">
-                <i class="bi bi-star-fill" data-value="1"></i>
-                <i class="bi bi-star-fill" data-value="2"></i>
-                <i class="bi bi-star-fill" data-value="3"></i>
-                <i class="bi bi-star-fill" data-value="4"></i>
-                <i class="bi bi-star-fill" data-value="5"></i>
-            </div>
-            <p id="rating-feedback" style="display: none; color: green; margin-top: 10px; font-weight: bold;">¡Valoración guardada!</p>
+<section class="bottom">
+    <button class="button send-button" id="send-button">
+        <div hidden id="spinner" class="spinner-border spinner-border-sm" role="status">
+            <span class="sr-only"></span>
         </div>
-    </div>
+        Enviar
+    </button>
+</section>
 
-    <script src="https://unpkg.com/sweetalert@2.1.2/dist/sweetalert.min.js"></script>
-    <script src="{{ url_for('static', filename='js/speech-synthesis.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/speech-recording.js') }}"></script>
+<!-- Template para el modal de valoración (Oculto) -->
+<div id="rating-template" style="display: none;">
+    <div class="swal-content__rating">
+        <span class="rating-label">¿Qué tan fácil te resultó pronunciar esta frase?</span>
+        <div class="star-rating">
+            <span class="rating-sub-label">Muy difícil</span>
+            <i class="bi bi-star-fill" data-value="1"></i>
+            <i class="bi bi-star-fill" data-value="2"></i>
+            <i class="bi bi-star-fill" data-value="3"></i>
+            <i class="bi bi-star-fill" data-value="4"></i>
+            <i class="bi bi-star-fill" data-value="5"></i>
+            <span class="rating-sub-label">Muy fácil</span>
+        </div>
+        <p id="rating-feedback" style="display: none; color: green; margin-top: 10px; font-weight: bold;">¡Valoración
+            guardada!</p>
+    </div>
+</div>
+
+<script src="https://unpkg.com/sweetalert@2.1.2/dist/sweetalert.min.js"></script>
+<script src="{{ url_for('static', filename='js/speech-synthesis.js') }}"></script>
+<script src="{{ url_for('static', filename='js/speech-recording.js') }}"></script>
 {% endblock %}
