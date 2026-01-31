@@ -50,7 +50,27 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    recordButton.addEventListener('click', () => {
+    recordButton.addEventListener('click', async () => {
+        // --- INICIO VALIDACIÓN MICRÓFONO (ANTONIO) ---
+        let hasMicDevice = false;
+        try {
+            const devices = await navigator.mediaDevices.enumerateDevices();
+            hasMicDevice = devices.some(d => d.kind === 'audioinput');
+        } catch (e) {
+            console.error("Error enumerating devices", e);
+        }
+
+        if (!currentStream && !hasMicDevice) {
+            showMicWarningModal();
+            return;
+        }
+
+        if (!currentStream) {
+            showMicWarningModal();
+            return;
+        }
+        // --- FIN VALIDACIÓN MICRÓFONO ---
+
         if (mediaRecorder.state === 'inactive') {
             // --- COMIENZO DEL PARCHE PARA SAFARI/iOS ---
             if (!audioCtx) {
@@ -268,6 +288,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
             canvasCtx.lineTo(canvas.width, canvas.height / 2);
             canvasCtx.stroke();
+        }
+    }
+
+    // --- FUNCIONES EXTRA (ANTONIO) ---
+    function showMicWarningModal() {
+        const modal = document.getElementById('mic-warning-modal');
+        if (modal) {
+            modal.style.display = 'flex';
         }
     }
 })
