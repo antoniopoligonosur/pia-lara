@@ -137,6 +137,24 @@
   </div>
 </div>
 
+<!-- Modal Warning Mic - Custom -->
+<div id="mic-warning-modal" class="mic-modal-overlay">
+    <div class="mic-modal-content">
+        <div class="mic-modal-icon">
+            <svg viewBox="0 0 24 24" style="width: 60px; height: 60px; fill: #666;">
+                <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
+                <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+            </svg>
+             <svg class="mic-warning-badge" viewBox="0 0 24 24">
+                <path fill="#ffbc42" d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/>
+             </svg>
+        </div>
+        <h3>No detectamos tu micrófono</h3>
+        <p>Revisa que esté conectado y que el navegador tenga permiso para usarlo.</p>
+        <button class="mic-modal-btn" onclick="document.getElementById('mic-warning-modal').style.display='none'">Continuar</button>
+    </div>
+</div>
+
 <script src="https://unpkg.com/sweetalert@2.1.2/dist/sweetalert.min.js"></script>
 <script src="{{ url_for('static', filename='js/speech-synthesis.js') }}"></script>
 <script src="{{ url_for('static', filename='js/speech-recording.js') }}"></script>
