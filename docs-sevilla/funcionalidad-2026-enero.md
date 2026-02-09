@@ -68,3 +68,38 @@ Estilos "aditivos" agregados al final del archivo para no romper el diseño exis
 ## 5. Mantenimiento
 - **Preservación:** El código ha sido diseñado para ser mínimamente intrusivo. Si se desea desactivar la validación, basta con comentar las líneas de validación en el JS; el HTML y CSS pueden permanecer sin afectar la visualización (ya que están ocultos por defecto).
 - **Compatibilidad:** Usa APIs estándar del navegador (`navigator.mediaDevices`).
+
+---
+
+# Funcionalidad: Modal de Consejos para Grabación de Audio
+
+Este componente muestra un modal con recomendaciones para grabar audio, utilizando **Bootstrap 5**.
+
+## Estructura
+
+- **Modal** (`#modalConsejosAudio`)
+  - **Header**
+    - Título: "Consejos para grabar tu audio" con ícono SVG.
+    - Botón de cierre (`btn-close`).
+  - **Body**
+    - Texto introductorio.
+    - Lista de consejos:
+      1. Mantener un lugar **silencioso**.
+      2. Hablar con **calma** y naturalidad.
+      3. Volumen cómodo y claro.
+      4. Revisar y **volver a grabar** si es necesario.
+      5. Tomarse el tiempo necesario.
+  - **Footer**
+    - Mensaje de agradecimiento.
+    - Botón "Entendido" para cerrar el modal.
+
+- **Botón disparador**
+  - Botón circular con ícono `i`.
+  - Ubicación: esquina superior derecha (`position-fixed top-0 end-0`).
+  - Atributos: `data-bs-toggle="modal"` y `data-bs-target="#modalConsejosAudio"`.
+
+## Notas
+
+- Modal centrado y de tamaño grande (`modal-dialog-centered modal-lg`).
+- Compatible con dispositivos móviles y escritorio.
+- Estilos personalizados para ícono y espaciado (`px-4 px-md-5`, `gap-2`).

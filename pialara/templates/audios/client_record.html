@@ -116,9 +116,11 @@
         </g>
       </svg>
     </span>
-  </a>
+  </a>  
 </section>
 
+
+<!-- Modales -->
 <!-- Template para el modal de valoración (Oculto) -->
 <div id="rating-template" style="display: none;">
   <div class="swal-content__rating">
@@ -136,7 +138,6 @@
       guardada!</p>
   </div>
 </div>
-
 <!-- Modal Warning Mic - Custom -->
 <div id="mic-warning-modal" class="mic-modal-overlay">
     <div class="mic-modal-content">
@@ -154,6 +155,57 @@
         <button class="mic-modal-btn" onclick="document.getElementById('mic-warning-modal').style.display='none'">Continuar</button>
     </div>
 </div>
+<!-- Modal Consejos Audio - Custom -->
+<div class="modal fade" id="modalConsejosAudio" tabindex="-1" aria-labelledby="modalConsejosAudioLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+
+      <div class="modal-header align-items-center">
+        <h5 class="modal-title d-flex align-items-center gap-2 fw-bold text-primary" id="modalConsejosAudioLabel">
+          <svg viewBox="0 0 24 24" style="width: 32px; height: 32px; fill: currentColor;">
+            <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
+            <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+          </svg>
+          Consejos para grabar tu audio
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+
+      <div class="modal-body small px-4 px-md-5">
+        <p>Para ayudarnos a entrenar la inteligencia artificial, sigue estos consejos:</p>
+
+        <ul>
+          <li>Permanece en un lugar <strong>silencioso</strong> y evita ruidos de fondo.</li>
+          <li>Mantén la <strong>calma</strong> y habla con naturalidad.</li>
+          <li>Habla a un volumen cómodo y claro.</li>
+          <li>Revisa tu grabación y <strong>vuelve a grabarla</strong> si es necesario.</li>
+          <li>No tengas prisa, tómate tu tiempo.</li>
+        </ul>
+      </div>
+
+      <div class="modal-footer d-flex justify-content-between align-items-center px-4 px-md-5">
+        <p class="mb-0 small text-start">¡Gracias por tu colaboración! 💙</p>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Entendido</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- Botón para abrir el modal de consejos de audio -->
+  <button
+    type="button"
+    class="btn btn-outline-primary rounded-circle position-fixed top-0 end-0 m-3"
+    style="width: 40px; height: 40px; z-index: 1055;"
+    data-bs-toggle="modal"
+    data-bs-target="#modalConsejosAudio"
+    aria-label="Información para grabar audio"
+  >
+    <strong>i</strong>
+  </button>
+
+<!-- fin Modales -->
+
+
 
 <script src="https://unpkg.com/sweetalert@2.1.2/dist/sweetalert.min.js"></script>
 <script src="{{ url_for('static', filename='js/speech-synthesis.js') }}"></script>
