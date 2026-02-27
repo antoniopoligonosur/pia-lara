@@ -210,14 +210,29 @@ def client_record(tag_name):
             next_syllabus_item = select_random_item(syllabus_items)
             session['next_syllabus_item_ent'] = str(next_syllabus_item['_id'])
     else:
-        # Si no hay 'current_item_id', seleccionamos aleatoria
-        next_syllabus_item = select_random_item(syllabus_items)
-        session['next_syllabus_item_ent'] = str(next_syllabus_item['_id'])
+        # MODO RUTINA: Comprobar si estamos en una rutina
+        if 'routine_items' in session and session.get('routine_index') is not None:
+            routine_index = session['routine_index']
+            routine_items = session['routine_items']
+            if routine_index < len(routine_items):
+                next_syllabus_item = syllabus.find_one({"_id": ObjectId(routine_items[routine_index])})
+            else:
+                next_syllabus_item = select_random_item(syllabus_items)
+                session['next_syllabus_item_ent'] = str(next_syllabus_item['_id'])
+        else:
+            # Si no hay 'current_item_id' ni rutina, seleccionamos aleatoria
+            next_syllabus_item = select_random_item(syllabus_items)
+            session['next_syllabus_item_ent'] = str(next_syllabus_item['_id'])
 
-    
+    routine_data = None
+    if 'routine_items' in session and session.get('routine_index') is not None:
+        routine_data = {
+            "current": session['routine_index'] + 1,
+            "total": len(session['routine_items'])
+        }
 
     # Pasamos el item seleccionado a la plantilla
-    return render_template('audios/client_record.html', tag=tag_name, syllabus=next_syllabus_item)
+    return render_template('audios/client_record.html', tag=tag_name, syllabus=next_syllabus_item, routine_data=routine_data)
 
 # Función para seleccionar una frase aleatoria que no tenga 'iterable' o tenga 'iterable.num = 1'
 def select_random_item(syllabus_items):
@@ -226,6 +241,30 @@ def select_random_item(syllabus_items):
     if valid_items:
         return random.choice(valid_items)
 
+
+@bp.route('/client-routine')
+@login_required
+def client_routine():
+    syllabus = Syllabus()
+    # Genera una rutina simple de 5 frases aleatorias
+    # TODO: Logica avanzada para incluir frases más difíciles o usadas
+    pipeline = [
+        { '$unwind': { 'path': '$tags' } },
+        { '$sample': { 'size': 5 } }
+    ]
+    syllabus_items = list(syllabus.aggregate(pipeline))
+    
+    if len(syllabus_items) > 0:
+        session.pop('next_syllabus_item_ent', None)
+        session['routine_items'] = [str(item['_id']) for item in syllabus_items]
+        session['routine_index'] = 0
+        tag = syllabus_items[0]['tags']
+        if isinstance(tag, list):
+             tag = tag[0]
+        return redirect(url_for('audios.client_record', tag_name=tag))
+    
+    flash("No hay suficientes datos para crear una rutina.", "danger")
+    return redirect(url_for('audios.client_tag'))
 
 @bp.route('/client-text')
 @login_required
@@ -341,10 +380,38 @@ def save_record():
     usuario = Usuario()
     resultUsuario = usuario.update_one({"mail":current_user.email},{"$inc":{"cant_audios":1}})
 
+    # Verificamos si estamos en una rutina
+    is_routine_completed = False
+    next_routine_url = ""
+    
+    if 'routine_items' in session and session.get('routine_index') is not None:
+        session['routine_index'] += 1
+        routine_index = session['routine_index']
+        routine_items = session['routine_items']
+        
+        if routine_index < len(routine_items):
+            # Obtener el tag de la siguiente frase para armar la URL
+            syllabus = Syllabus()
+            next_item = syllabus.find_one({"_id": ObjectId(routine_items[routine_index])})
+            if next_item and 'tags' in next_item:
+                tag = next_item['tags']
+                if isinstance(tag, list):
+                    tag = tag[0]
+                next_routine_url = url_for('audios.client_record', tag_name=tag)
+            else:
+                next_routine_url = url_for('audios.client_tag')
+        else:
+            is_routine_completed = True
+            session.pop('routine_items', None)
+            session.pop('routine_index', None)
+
+
     data = {
         "status": 'ok',
         "message": "El audio ha sido almacenado correctamente.",
-        "audio_id": str(resultAudio.inserted_id)
+        "audio_id": str(resultAudio.inserted_id),
+        "is_routine_completed": is_routine_completed,
+        "next_routine_url": next_routine_url
     }
     return jsonify(data)
 

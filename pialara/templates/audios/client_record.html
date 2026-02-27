@@ -5,6 +5,19 @@
   <h1 class="text-center">Grabar audio a partir de la etiqueta <strong>{{ tag }}</strong></h1>
   <br />
 </header>
+
+{% if routine_data %}
+<div class="alert alert-primary text-center shadow-sm w-75 mx-auto mb-4 border-2" role="alert" style="border-radius: 12px;">
+    <h5 class="mb-0 fw-bold">
+        <i class="bi bi-activity me-2"></i> Rutina Diaria: Frase {{ routine_data.current }} de {{ routine_data.total }}
+    </h5>
+    {% set progress = (routine_data.current / routine_data.total) * 100 %}
+    <div class="progress mt-2" style="height: 10px;">
+      <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" style="width: {{ progress }}%;" aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+</div>
+{% endif %}
+
 <script>
   const syllabusId = "{{ syllabus._id }}";
 </script>
@@ -93,7 +106,15 @@
     <div hidden id="spinner" class="spinner-border spinner-border-sm" role="status">
       <span class="sr-only"></span>
     </div>
-    Enviar
+    {% if routine_data %}
+        {% if routine_data.current < routine_data.total %}
+            Guardar y Siguiente
+        {% else %}
+            Finalizar Rutina
+        {% endif %}
+    {% else %}
+        Enviar
+    {% endif %}
   </button>
 
   <a href="" class="button skip-button">

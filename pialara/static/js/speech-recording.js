@@ -212,18 +212,33 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             swal({
-                title: data.message || '',
+                title: data.is_routine_completed ? '¡Rutina Terminada!' : (data.message || ''),
                 content: swalContent,
                 icon: data.status === 'ok' ? 'success' : 'error',
                 buttons: {
+                    routine: {
+                        text: data.is_routine_completed ? 'Volver a Etiquetas' : (data.next_routine_url ? 'Siguiente Frase' : 'Aceptar'),
+                        value: 'continue_routine',
+                        className: 'btn-primary'
+                    },
                     audio: {
-                        text: 'Grabar otro audio',
-                        value: 'grabar'
+                        text: 'Grabar de nuevo',
+                        value: 'grabar',
+                        visible: !data.next_routine_url // Ocultar grabar de nuevo en rutina para no romper flujo
                     },
                 },
             }).then(value => {
-                if (value === "grabar")
-                    window.location.reload()
+                if (value === "grabar") {
+                    window.location.reload();
+                } else if (value === "continue_routine") {
+                    if (data.next_routine_url) {
+                        window.location.href = data.next_routine_url;
+                    } else if (data.is_routine_completed) {
+                        window.location.href = '/audios/cliente-tag';
+                    } else {
+                        window.location.href = '/audios/cliente-tag';
+                    }
+                }
             })
         }).fail(e => {
             swal({

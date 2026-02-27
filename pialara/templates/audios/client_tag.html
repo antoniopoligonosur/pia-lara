@@ -17,6 +17,19 @@
 
 <section>
 
+  <!-- Tarjeta Rutina -->
+  <div class="tags-container" style="margin-bottom: 2rem;">
+    <div class="card text-center border-primary shadow-sm w-100" style="background-color: #f8f9fa;">
+      <div class="card-body py-4">
+        <h3 class="card-title text-primary fw-bold mb-3"><i class="bi bi-stars text-warning me-2"></i> ¡Tu Rutina de Hoy!</h3>
+        <p class="card-text fs-5 mb-4 text-muted">Hemos preparado 5 frases especialmente seleccionadas para que practiques.</p>
+        <a href="{{ url_for('audios.client_routine') }}" class="btn btn-lg btn-primary px-5 rounded-pill shadow">
+          <i class="bi bi-play-fill me-2"></i> Empezar Entrenamiento
+        </a>
+      </div>
+    </div>
+  </div>
+
   <!-- Buscador -->
   <form class="tags-form" method="post" action="{{ url_for('audios.tag_search') }}">
     <input class="tags-form__input"
