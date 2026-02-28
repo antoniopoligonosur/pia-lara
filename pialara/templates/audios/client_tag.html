@@ -18,6 +18,7 @@
 <section>
 
   <!-- Tarjeta Rutina -->
+  {% if not routine_completed_today %}
   <div class="tags-container" style="margin-bottom: 2rem;">
     <div class="card text-center border-primary shadow-sm w-100" style="background-color: #f8f9fa;">
       <div class="card-body py-4">
@@ -29,6 +30,8 @@
       </div>
     </div>
   </div>
+  {% endif %}
+
 
   <!-- Buscador -->
   <form class="tags-form" method="post" action="{{ url_for('audios.tag_search') }}">

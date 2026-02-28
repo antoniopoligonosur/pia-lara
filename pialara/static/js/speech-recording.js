@@ -212,7 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             swal({
-                title: data.is_routine_completed ? '¡Rutina Terminada!' : (data.message || ''),
+                title: data.is_routine_completed ? 'Ruta diaria completada, felicidades' : (data.message || ''),
                 content: swalContent,
                 icon: data.status === 'ok' ? 'success' : 'error',
                 buttons: {

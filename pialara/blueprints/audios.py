@@ -31,6 +31,14 @@ bp = Blueprint('audios', __name__, url_prefix='/audios')
 @login_required
 def client_tag():
     audio = Audios()
+    usuario = Usuario()
+    
+    user_doc = usuario.find_one({"mail": current_user.email})
+    routine_completed_today = False
+    if user_doc and "ultima_rutina" in user_doc:
+        ultima_rutina = user_doc["ultima_rutina"]
+        if isinstance(ultima_rutina, datetime) and ultima_rutina.date() == datetime.now().date():
+            routine_completed_today = True
     
     match_base = {
         "texto.tipo": "syllabus",
@@ -114,6 +122,7 @@ def client_tag():
         'audios/client_tag.html',
 
         tags_suerte=tags_suerte,
+        routine_completed_today=routine_completed_today,
 
         total_audios=result.get("total_audios", [{}]),
         ultimas_etiquetas=result.get("ultimas_etiquetas", []),
@@ -210,8 +219,9 @@ def client_record(tag_name):
             next_syllabus_item = select_random_item(syllabus_items)
             session['next_syllabus_item_ent'] = str(next_syllabus_item['_id'])
     else:
-        # MODO RUTINA: Comprobar si estamos en una rutina
-        if 'routine_items' in session and session.get('routine_index') is not None:
+        # MODO RUTINA: Comprobar si estamos en una rutina controlada por query param
+        is_routine = request.args.get('routine') == '1'
+        if is_routine and 'routine_items' in session and session.get('routine_index') is not None:
             routine_index = session['routine_index']
             routine_items = session['routine_items']
             if routine_index < len(routine_items):
@@ -220,12 +230,15 @@ def client_record(tag_name):
                 next_syllabus_item = select_random_item(syllabus_items)
                 session['next_syllabus_item_ent'] = str(next_syllabus_item['_id'])
         else:
+            # Si no es rutina iniciada con el botón, limpiamos la sesión de una posible rutina abandonada
+            session.pop('routine_items', None)
+            session.pop('routine_index', None)
             # Si no hay 'current_item_id' ni rutina, seleccionamos aleatoria
             next_syllabus_item = select_random_item(syllabus_items)
             session['next_syllabus_item_ent'] = str(next_syllabus_item['_id'])
 
     routine_data = None
-    if 'routine_items' in session and session.get('routine_index') is not None:
+    if request.args.get('routine') == '1' and 'routine_items' in session and session.get('routine_index') is not None:
         routine_data = {
             "current": session['routine_index'] + 1,
             "total": len(session['routine_items'])
@@ -245,6 +258,14 @@ def select_random_item(syllabus_items):
 @bp.route('/client-routine')
 @login_required
 def client_routine():
+    usuario = Usuario()
+    user_doc = usuario.find_one({"mail": current_user.email})
+    if user_doc and "ultima_rutina" in user_doc:
+        ultima_rutina = user_doc["ultima_rutina"]
+        if isinstance(ultima_rutina, datetime) and ultima_rutina.date() == datetime.now().date():
+            flash("Ya has completado tu rutina diaria hoy. ¡Vuelve mañana!", "info")
+            return redirect(url_for('audios.client_tag'))
+
     syllabus = Syllabus()
     # Genera una rutina simple de 5 frases aleatorias
     # TODO: Logica avanzada para incluir frases más difíciles o usadas
@@ -261,7 +282,7 @@ def client_routine():
         tag = syllabus_items[0]['tags']
         if isinstance(tag, list):
              tag = tag[0]
-        return redirect(url_for('audios.client_record', tag_name=tag))
+        return redirect(url_for('audios.client_record', tag_name=tag, routine=1))
     
     flash("No hay suficientes datos para crear una rutina.", "danger")
     return redirect(url_for('audios.client_tag'))
@@ -397,13 +418,19 @@ def save_record():
                 tag = next_item['tags']
                 if isinstance(tag, list):
                     tag = tag[0]
-                next_routine_url = url_for('audios.client_record', tag_name=tag)
+                next_routine_url = url_for('audios.client_record', tag_name=tag, routine=1)
             else:
                 next_routine_url = url_for('audios.client_tag')
         else:
             is_routine_completed = True
             session.pop('routine_items', None)
             session.pop('routine_index', None)
+            
+            # Registrar que el usuario ha completado la rutina hoy
+            usuario.update_one(
+                {"mail": current_user.email},
+                {"$set": {"ultima_rutina": datetime.now()}}
+            )
 
 
     data = {
