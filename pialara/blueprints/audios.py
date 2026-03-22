@@ -376,9 +376,36 @@ def save_record():
     audio = Audios()
     resultAudio = audio.insert_one(newAudio)
 
-    # Incrementamos en 1 la cantidad de audios grabados
+    # Incrementamos en 1 la cantidad de audios grabados y calculamos racha
     usuario = Usuario()
-    resultUsuario = usuario.update_one({"mail":current_user.email},{"$inc":{"cant_audios":1}})
+    
+    hoy = datetime.now()
+    hoy_date = hoy.date()
+    racha = getattr(current_user, 'racha_actual', 0)
+    ultima = getattr(current_user, 'ultima_grabacion', None)
+
+    if ultima is not None and isinstance(ultima, datetime):
+        diferencia = (hoy_date - ultima.date()).days
+        if diferencia == 1:
+            racha += 1
+        elif diferencia > 1:
+            racha = 1
+    else:
+        racha = 1
+
+    current_user.racha_actual = racha
+    current_user.ultima_grabacion = hoy
+
+    resultUsuario = usuario.update_one(
+        {"mail": current_user.email},
+        {
+            "$inc": {"cant_audios": 1},
+            "$set": {
+                "racha_actual": racha,
+                "ultima_grabacion": hoy
+            }
+        }
+    )
 
     # Verificamos si estamos en una rutina
     is_routine_completed = False

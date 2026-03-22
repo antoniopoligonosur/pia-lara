@@ -5,6 +5,13 @@
     <h1 class="text-center">Etiquetas</h1>
   </header>
 
+  <div class="text-center mb-4 mt-2">
+    <div class="d-inline-flex align-items-center bg-white px-4 py-2 rounded-pill shadow-sm border border-warning">
+      <span class="fs-4 me-2">🔥</span>
+      <span class="fs-5 fw-bold text-dark">Racha actual: <span class="text-danger">{{ current_user.racha_actual }}</span> días</span>
+    </div>
+  </div>
+
   {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
       {% for category, message in messages %}

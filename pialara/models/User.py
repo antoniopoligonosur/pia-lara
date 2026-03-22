@@ -1,7 +1,7 @@
 from flask_login import UserMixin
 
 class User(UserMixin):
-    def __init__(self, id, mail, nombre, password, rol, activo, ultima_conexion, parent="",font_size=1.0):
+    def __init__(self, id, mail, nombre, password, rol, activo, ultima_conexion, parent="",font_size=1.0, racha_actual=0, ultima_grabacion=None):
         self.id = id
         self.email = mail
         self.nombre = nombre
@@ -11,6 +11,8 @@ class User(UserMixin):
         self.ultima_conexion = ultima_conexion
         self.parent = parent
         self.font_size = font_size
+        self.racha_actual = racha_actual
+        self.ultima_grabacion = ultima_grabacion
 
     def __str__(self):
         return f"{self.email} ({self.nombre} / {self.password})"

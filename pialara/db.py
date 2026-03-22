@@ -47,7 +47,9 @@ def get_user_by_id(id):
                            rol=usuario.get("rol"),
                            ultima_conexion=usuario.get("ultima_conexion"),
                            parent=usuario.get("parent"),
-						   activo=usuario.get("activo"))
+                           activo=usuario.get("activo"),
+                           racha_actual=usuario.get("racha_actual", 0),
+                           ultima_grabacion=usuario.get("ultima_grabacion"))
 													   
 		  
 				
@@ -73,7 +75,9 @@ def get_user(email):
                            ultima_conexion=usuario.get("ultima_conexion"),
                            parent=usuario.get("parent"),
                            font_size=usuario.get("font_size"),
-						   activo=usuario.get("activo"))
+                           activo=usuario.get("activo"),
+                           racha_actual=usuario.get("racha_actual", 0),
+                           ultima_grabacion=usuario.get("ultima_grabacion"))
 													   
 						 
 				
