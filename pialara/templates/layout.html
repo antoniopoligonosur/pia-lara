@@ -68,6 +68,7 @@
             <li><a href="{{ url_for('audios.client_tag') }}" class="d-block text-light p-3 border-0 fs-5"><i class="bi bi-book m-2 lead"></i>Ver etiquetas</a></li>
             <li><a href="{{ url_for('audios.client_text') }}" class="d-block text-light p-3 border-0 fs-5"><i class="bi bi-file-earmark-music m-2 lead"></i>Grabar mi audio</a></li>
             <li><a href="{{ url_for('audios.client_report') }}" class="d-block text-light p-3 border-0 fs-5"><i class="bi bi-info-circle m-2 lead"></i>Informes</a></li>
+            <li><a href="{{ url_for('audios.calendario_rachas') }}" class="d-block text-light p-3 border-0 fs-5"><i class="bi bi-calendar3-event m-2 lead"></i>Calendario de Rachas</a></li>
             {% endif %}
           </ul>
           <div class="pb-3 text-white text-decoration-none pt-5 text-center">
@@ -120,6 +121,10 @@
                   Grabar mi audio
                 </a><br /></li>
                 <li><a href="{{ url_for('audios.client_report') }}" class="d-block text-light border-0 d-flex align-items-center gap-1 fs-5"><i class="bi bi-info-circle m-2 lead"></i>Informes</a></li>
+                <li><a href="{{ url_for('audios.calendario_rachas') }}" class="d-block text-light border-0 d-flex align-items-center gap-1 fs-5">
+                    <i class="bi bi-calendar3-event m-2 lead"></i>
+                    Calendario de Rachas
+                  </a><br /></li>
               </ul>
             </li>
             {% endif %}
