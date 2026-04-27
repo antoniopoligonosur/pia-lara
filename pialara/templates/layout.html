@@ -60,14 +60,14 @@
           <br />
           <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-sm-start" id="menuMobile">
             {% if current_user.rol != "cliente" %}
-            <li><a href="{{ url_for('users.index') }}" class="d-block text-light p-3 border-0"><i class="bi bi-person-circle lead m-2"></i>Usuarios</a></li>
-            <li><a href="{{ url_for('syllabus.index') }}" class="d-block text-light p-3 border-0"><i class="bi bi-book m-2 lead"></i>Frases</a></li>
-            <li><a href="{{ url_for('audios.client_report') }}" class="d-block text-light p-3 border-0"><i class="bi bi-info-circle m-2 lead"></i>Informes</a></li>
+            <li><a href="{{ url_for('users.index') }}" class="d-block text-light p-3 border-0"><i class="bi bi-person-circle lead m-2"></i>{{ _('Usuarios') }}</a></li>
+            <li><a href="{{ url_for('syllabus.index') }}" class="d-block text-light p-3 border-0"><i class="bi bi-book m-2 lead"></i>{{ _('Frases') }}</a></li>
+            <li><a href="{{ url_for('audios.client_report') }}" class="d-block text-light p-3 border-0"><i class="bi bi-info-circle m-2 lead"></i>{{ _('Informes') }}</a></li>
             {% endif %}
             {% if current_user.rol == "cliente" %}
-            <li><a href="{{ url_for('audios.client_tag') }}" class="d-block text-light p-3 border-0 fs-5"><i class="bi bi-book m-2 lead"></i>Ver etiquetas</a></li>
-            <li><a href="{{ url_for('audios.client_text') }}" class="d-block text-light p-3 border-0 fs-5"><i class="bi bi-file-earmark-music m-2 lead"></i>Grabar mi audio</a></li>
-            <li><a href="{{ url_for('audios.client_report') }}" class="d-block text-light p-3 border-0 fs-5"><i class="bi bi-info-circle m-2 lead"></i>Informes</a></li>
+            <li><a href="{{ url_for('audios.client_tag') }}" class="d-block text-light p-3 border-0 fs-5"><i class="bi bi-book m-2 lead"></i>{{ _('Ver etiquetas') }}</a></li>
+            <li><a href="{{ url_for('audios.client_text') }}" class="d-block text-light p-3 border-0 fs-5"><i class="bi bi-file-earmark-music m-2 lead"></i>{{ _('Grabar mi audio') }}</a></li>
+            <li><a href="{{ url_for('audios.client_report') }}" class="d-block text-light p-3 border-0 fs-5"><i class="bi bi-info-circle m-2 lead"></i>{{ _('Informes') }}</a></li>
             {% endif %}
             <li>
               <div class="lang-toggle-container mt-3 px-3">
@@ -91,7 +91,7 @@
             </div>
 
             <a href="{{ url_for('auth.logout') }}">
-              <h5 id="logout" class="text-light"><i class="bi bi-box-arrow-left"></i> Salir</h5>
+              <h5 id="logout" class="text-light"><i class="bi bi-box-arrow-left"></i> {{ _('Salir') }}</h5>
             </a>
           </div>
         </div>
@@ -108,9 +108,9 @@
           <br />
           <ul class="nav nav-pills flex-column mb-sm-auto mb-0 pb-5 align-items-center align-items-sm-start" id="menuDesktop">
             {% if current_user.rol != "cliente" %}
-            <li><a href="{{ url_for('users.index') }}" class="d-block text-light p-3 border-0"><i class="bi bi-person-circle lead m-2"></i>Usuarios</a></li>
-            <li><a href="{{ url_for('syllabus.index') }}" class="d-block text-light p-3 border-0"><i class="bi bi-book m-2 lead"></i>Frases</a></li>
-            <li><a href="{{ url_for('audios.client_report') }}" class="d-block text-light p-3 border-0"><i class="bi bi-info-circle m-2 lead"></i>Informes</a></li>
+            <li><a href="{{ url_for('users.index') }}" class="d-block text-light p-3 border-0"><i class="bi bi-person-circle lead m-2"></i>{{ _('Usuarios') }}</a></li>
+            <li><a href="{{ url_for('syllabus.index') }}" class="d-block text-light p-3 border-0"><i class="bi bi-book m-2 lead"></i>{{ _('Frases') }}</a></li>
+            <li><a href="{{ url_for('audios.client_report') }}" class="d-block text-light p-3 border-0"><i class="bi bi-info-circle m-2 lead"></i>{{ _('Informes') }}</a></li>
             {% endif %}
             {% if current_user.rol == "cliente" %}
             <li>
@@ -125,7 +125,7 @@
                   <i class="bi bi-file-earmark-music m-2 lead"></i>
                   Grabar mi audio
                 </a><br /></li>
-                <li><a href="{{ url_for('audios.client_report') }}" class="d-block text-light border-0 d-flex align-items-center gap-1 fs-5"><i class="bi bi-info-circle m-2 lead"></i>Informes</a></li>
+                <li><a href="{{ url_for('audios.client_report') }}" class="d-block text-light border-0 d-flex align-items-center gap-1 fs-5"><i class="bi bi-info-circle m-2 lead"></i>{{ _('Informes') }}</a></li>
               </ul>
             </li>
             {% endif %}
@@ -152,7 +152,7 @@
             </a>
 
             <a href="{{ url_for('auth.logout') }}">
-              <h5 id="logout" class="text-light"><i class="bi bi-box-arrow-left"></i> Salir</h5>
+              <h5 id="logout" class="text-light"><i class="bi bi-box-arrow-left"></i> {{ _('Salir') }}</h5>
             </a>
           </div>
         </div>
