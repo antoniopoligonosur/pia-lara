@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-04-27 15:16+0200\n"
+"POT-Creation-Date: 2026-04-27 15:27+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,6 +38,8 @@ msgstr ""
 msgid "Ver etiquetas"
 msgstr ""
 
+#: pialara/templates/audios/client_text.html:5
+#: pialara/templates/audios/client_text.html:11
 #: pialara/templates/layout.html:69 pialara/templates/layout.html:126
 msgid "Grabar mi audio"
 msgstr ""
@@ -64,6 +66,235 @@ msgstr ""
 
 #: pialara/templates/layout.html:94 pialara/templates/layout.html:155
 msgid "Salir"
+msgstr ""
+
+#: pialara/templates/audios/client_record.html:5
+msgid "Grabar audio a partir de la etiqueta"
+msgstr ""
+
+#: pialara/templates/audios/client_record.html:12
+msgid "Rutina Diaria: Frase"
+msgstr ""
+
+#: pialara/templates/audios/client_record.html:12
+msgid "de"
+msgstr ""
+
+#: pialara/templates/audios/client_record.html:27
+msgid "Frase"
+msgstr ""
+
+#: pialara/templates/audios/client_record.html:33
+msgid "Escuchar"
+msgstr ""
+
+#: pialara/templates/audios/client_record.html:37
+msgid "Mostrar"
+msgstr ""
+
+#: pialara/templates/audios/client_record.html:111
+msgid "Guardar y Siguiente"
+msgstr ""
+
+#: pialara/templates/audios/client_record.html:113
+msgid "Finalizar Rutina"
+msgstr ""
+
+#: pialara/templates/audios/client_record.html:116
+#: pialara/templates/audios/client_text.html:53
+msgid "Enviar"
+msgstr ""
+
+#: pialara/templates/audios/client_record.html:121
+msgid "Saltar a otra frase"
+msgstr ""
+
+#: pialara/templates/audios/client_record.html:148
+#: pialara/templates/audios/client_text.html:61
+msgid "¿Qué tan fácil te resultó pronunciar esta frase?"
+msgstr ""
+
+#: pialara/templates/audios/client_record.html:150
+#: pialara/templates/audios/client_text.html:63
+msgid "Muy difícil"
+msgstr ""
+
+#: pialara/templates/audios/client_record.html:156
+#: pialara/templates/audios/client_text.html:69
+msgid "Muy fácil"
+msgstr ""
+
+#: pialara/templates/audios/client_record.html:158
+#: pialara/templates/audios/client_text.html:71
+msgid "¡Valoración guardada!"
+msgstr ""
+
+#: pialara/templates/audios/client_record.html:173
+#: pialara/templates/audios/client_text.html:86
+msgid "No detectamos tu micrófono"
+msgstr ""
+
+#: pialara/templates/audios/client_record.html:174
+#: pialara/templates/audios/client_text.html:87
+msgid "Revisa que esté conectado y que el navegador tenga permiso para usarlo."
+msgstr ""
+
+#: pialara/templates/audios/client_record.html:189
+#: pialara/templates/audios/client_text.html:102
+msgid "Consejos para grabar tu audio"
+msgstr ""
+
+#: pialara/templates/audios/client_record.html:191
+#: pialara/templates/audios/client_text.html:104
+msgid "Cerrar"
+msgstr ""
+
+#: pialara/templates/audios/client_record.html:195
+#: pialara/templates/audios/client_text.html:108
+msgid ""
+"Para ayudarnos a entrenar la inteligencia artificial, sigue estos "
+"consejos:"
+msgstr ""
+
+#: pialara/templates/audios/client_record.html:198
+#: pialara/templates/audios/client_text.html:111
+msgid "Permanece en un lugar"
+msgstr ""
+
+#: pialara/templates/audios/client_record.html:198
+#: pialara/templates/audios/client_text.html:111
+msgid "silencioso"
+msgstr ""
+
+#: pialara/templates/audios/client_record.html:198
+#: pialara/templates/audios/client_text.html:111
+msgid "y evita ruidos de fondo."
+msgstr ""
+
+#: pialara/templates/audios/client_record.html:199
+#: pialara/templates/audios/client_text.html:112
+msgid "Mantén la"
+msgstr ""
+
+#: pialara/templates/audios/client_record.html:199
+#: pialara/templates/audios/client_text.html:112
+msgid "calma"
+msgstr ""
+
+#: pialara/templates/audios/client_record.html:199
+#: pialara/templates/audios/client_text.html:112
+msgid "y habla con naturalidad."
+msgstr ""
+
+#: pialara/templates/audios/client_record.html:200
+#: pialara/templates/audios/client_text.html:113
+msgid "Habla a un volumen cómodo y claro."
+msgstr ""
+
+#: pialara/templates/audios/client_record.html:201
+#: pialara/templates/audios/client_text.html:114
+msgid "Revisa tu grabación y"
+msgstr ""
+
+#: pialara/templates/audios/client_record.html:201
+#: pialara/templates/audios/client_text.html:114
+msgid "vuelve a grabarla"
+msgstr ""
+
+#: pialara/templates/audios/client_record.html:201
+#: pialara/templates/audios/client_text.html:114
+msgid "si es necesario."
+msgstr ""
+
+#: pialara/templates/audios/client_record.html:202
+#: pialara/templates/audios/client_text.html:115
+msgid "No tengas prisa, tómate tu tiempo."
+msgstr ""
+
+#: pialara/templates/audios/client_record.html:207
+#: pialara/templates/audios/client_text.html:120
+msgid "¡Gracias por tu colaboración! 💙"
+msgstr ""
+
+#: pialara/templates/audios/client_record.html:208
+#: pialara/templates/audios/client_text.html:121
+msgid "Entendido"
+msgstr ""
+
+#: pialara/templates/audios/client_record.html:221
+#: pialara/templates/audios/client_text.html:134
+msgid "Información para grabar audio"
+msgstr ""
+
+#: pialara/templates/audios/client_report.html:6
+#: pialara/templates/audios/client_report.html:8
+msgid "Resumen de Audios de"
+msgstr ""
+
+#: pialara/templates/audios/client_report.html:10
+msgid "Mi resumen de audios"
+msgstr ""
+
+#: pialara/templates/audios/client_tag.html:5
+msgid "Etiquetas"
+msgstr ""
+
+#: pialara/templates/audios/client_tag.html:11
+msgid "Racha actual:"
+msgstr ""
+
+#: pialara/templates/audios/client_tag.html:11
+msgid "días"
+msgstr ""
+
+#: pialara/templates/audios/client_tag.html:31
+msgid "¡Tu Rutina de Hoy!"
+msgstr ""
+
+#: pialara/templates/audios/client_tag.html:32
+msgid "Hemos preparado 5 frases especialmente seleccionadas para que practiques."
+msgstr ""
+
+#: pialara/templates/audios/client_tag.html:34
+msgid "Empezar Entrenamiento"
+msgstr ""
+
+#: pialara/templates/audios/client_tag.html:45
+msgid "Buscar etiqueta..."
+msgstr ""
+
+#: pialara/templates/audios/client_tag.html:56
+msgid "¿Voy a tener suerte?"
+msgstr ""
+
+#: pialara/templates/audios/client_tag.html:65
+msgid "Audios grabados:"
+msgstr ""
+
+#: pialara/templates/audios/client_tag.html:71
+msgid "Últimas 5 etiquetas grabadas"
+msgstr ""
+
+#: pialara/templates/audios/client_tag.html:74
+#: pialara/templates/audios/client_tag.html:86
+#: pialara/templates/audios/client_tag.html:98
+msgid "Total audios grabados:"
+msgstr ""
+
+#: pialara/templates/audios/client_tag.html:83
+msgid "5 etiquetas más grabadas"
+msgstr ""
+
+#: pialara/templates/audios/client_tag.html:95
+msgid "5 etiquetas menos grabadas"
+msgstr ""
+
+#: pialara/templates/audios/client_tag.html:142
+msgid "Etiquetas encontradas"
+msgstr ""
+
+#: pialara/templates/audios/client_text.html:17
+msgid "Escribe aquí tu frase"
 msgstr ""
 
 #: pialara/templates/main/index.html:5

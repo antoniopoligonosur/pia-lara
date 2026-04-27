@@ -2,13 +2,13 @@
 
 {% block content %}
   <header class="header">
-    <h1 class="text-center">Etiquetas</h1>
+    <h1 class="text-center">{{ _('Etiquetas') }}</h1>
   </header>
 
   <div class="text-center mb-4 mt-2">
     <div class="d-inline-flex align-items-center bg-white px-4 py-2 rounded-pill shadow-sm border border-warning">
       <span class="fs-4 me-2">🔥</span>
-      <span class="fs-5 fw-bold text-dark">Racha actual: <span class="text-danger">{{ current_user.racha_actual }}</span> días</span>
+      <span class="fs-5 fw-bold text-dark">{{ _('Racha actual:') }} <span class="text-danger">{{ current_user.racha_actual }}</span> {{ _('días') }}</span>
     </div>
   </div>
 
@@ -28,10 +28,10 @@
   <div class="tags-container" style="margin-bottom: 2rem;">
     <div class="card text-center border-primary shadow-sm w-100" style="background-color: #f8f9fa;">
       <div class="card-body py-4">
-        <h3 class="card-title text-primary fw-bold mb-3"><i class="bi bi-stars text-warning me-2"></i> ¡Tu Rutina de Hoy!</h3>
-        <p class="card-text fs-5 mb-4 text-muted">Hemos preparado 5 frases especialmente seleccionadas para que practiques.</p>
+        <h3 class="card-title text-primary fw-bold mb-3"><i class="bi bi-stars text-warning me-2"></i> {{ _('¡Tu Rutina de Hoy!') }}</h3>
+        <p class="card-text fs-5 mb-4 text-muted">{{ _('Hemos preparado 5 frases especialmente seleccionadas para que practiques.') }}</p>
         <a href="{{ url_for('audios.client_routine') }}" class="btn btn-lg btn-primary px-5 rounded-pill shadow">
-          <i class="bi bi-play-fill me-2"></i> Empezar Entrenamiento
+          <i class="bi bi-play-fill me-2"></i> {{ _('Empezar Entrenamiento') }}
         </a>
       </div>
     </div>
@@ -42,7 +42,7 @@
     <input class="tags-form__input"
            type="search"
            name="tagName"
-           placeholder="Buscar etiqueta..."
+           placeholder="{{ _('Buscar etiqueta...') }}"
            value="{{ tag_name }}" />
     <button class="tags-form__button btn btn-primary" type="submit">
       <i class="bi bi-search me-2"></i>
@@ -53,7 +53,7 @@
   <div class="tags-container">
     {% for tag in tags_suerte %}
       <a class="btn btn-info" href="/audios/client-record/{{ tag._id }}">
-        ¿Voy a tener suerte?
+        {{ _('¿Voy a tener suerte?') }}
       </a>
     {% endfor %}
   </div>
@@ -62,16 +62,16 @@
   {% if not tags %}
   <div class="tags-container">
     <fieldset>
-      🎙️ Audios grabados: <strong>{{ total_audios[0].total if total_audios else 0 }}</strong>
+      🎙️ {{ _('Audios grabados:') }} <strong>{{ total_audios[0].total if total_audios else 0 }}</strong>
     </fieldset>
   </div>
 
   <div class="tags-container">
     <fieldset>
-      <legend>Últimas 5 etiquetas grabadas</legend>
+      <legend>{{ _('Últimas 5 etiquetas grabadas') }}</legend>
       {% for x in ultimas_etiquetas %}
         <a class="tag button"
-           href="/audios/client-record/{{ x.tag }}" title="Total audios grabados: {{ x.total }}">
+           href="/audios/client-record/{{ x.tag }}" title="{{ _('Total audios grabados:') }} {{ x.total }}">
           {{ x.tag.upper() }}
         </a>
       {% endfor %}
@@ -80,10 +80,10 @@
 
   <div class="tags-container">
     <fieldset>
-      <legend>5 etiquetas más grabadas</legend>
+      <legend>{{ _('5 etiquetas más grabadas') }}</legend>
       {% for x in top_etiquetas %}
         <a class="tag button"
-           href="/audios/client-record/{{ x.tag }}" title="Total audios grabados: {{ x.total }}">
+           href="/audios/client-record/{{ x.tag }}" title="{{ _('Total audios grabados:') }} {{ x.total }}">
           {{ x.tag.upper() }}
         </a>
       {% endfor %}
@@ -92,10 +92,10 @@
 
   <div class="tags-container">
     <fieldset>
-      <legend>5 etiquetas menos grabadas</legend>
+      <legend>{{ _('5 etiquetas menos grabadas') }}</legend>
       {% for x in bottom_etiquetas %}
         <a class="tag button"
-           href="/audios/client-record/{{ x.tag }}" title="Total audios grabados: {{ x.total }}">
+           href="/audios/client-record/{{ x.tag }}" title="{{ _('Total audios grabados:') }} {{ x.total }}">
           {{ x.tag.upper() }}
         </a>
       {% endfor %}
@@ -139,7 +139,7 @@
   {% if tags %}
   <div class="tags-container">
     <fieldset>
-      <legend>Etiquetas encontradas</legend>
+      <legend>{{ _('Etiquetas encontradas') }}</legend>
       {% for tag in tags %}
         <a class="tag button"
            href="/audios/client-record/{{ tag._id }}">
