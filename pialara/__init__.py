@@ -1,4 +1,5 @@
-from flask import Flask
+from flask import Flask, session
+from flask_babel import Babel
 from flask_login import LoginManager
 from pialara import db
 import os
@@ -27,6 +28,11 @@ def create_app():
     login_manager = LoginManager()
     login_manager.login_view = 'auth.login'
     login_manager.init_app(app)
+
+    def get_locale():
+        return session.get('lang', 'es')
+
+    babel = Babel(app, locale_selector=get_locale)
 
     # Blueprints
     from pialara.blueprints import auth, syllabus, users, audios, main, lara
