@@ -23,7 +23,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css" />
   
   <!-- LARA v240323 -->
-  <title>PIA FP Lara</title>
+  <title>{{ _('PIA FP Lara') }}</title>
   <script>
        document.addEventListener("DOMContentLoaded", function() {
             // Obtener el valor de la variable de sesión 'font_size'
@@ -83,10 +83,10 @@
 
             <div class="accessibility-bar">
               <!-- Botones para cambiar el esquema de color -->
-              <button class="button default-scheme" onclick="changeColorScheme('contrast-default')" title="Color por defecto (Reset)" aria-label="Color por Defecto">R</button>
-              <button class="button contrast-1" onclick="changeColorScheme('contrast-1')" title="Alto Contraste 1" aria-label="Alto Contraste 1">A</button>
-              <button class="button contrast-2" onclick="changeColorScheme('contrast-2')" title="Alto Contraste 2" aria-label="Alto Contraste 2">A</button>
-              <button class="button contrast-3" onclick="changeColorScheme('contrast-3')" title="Alto Contraste 3" aria-label="Alto Contraste 3">A</button>
+              <button class="button default-scheme" onclick="changeColorScheme('contrast-default')" title="{{ _('Color por defecto (Reset)') }}" aria-label="{{ _('Color por Defecto') }}">R</button>
+              <button class="button contrast-1" onclick="changeColorScheme('contrast-1')" title="{{ _('Alto Contraste 1') }}" aria-label="{{ _('Alto Contraste 1') }}">A</button>
+              <button class="button contrast-2" onclick="changeColorScheme('contrast-2')" title="{{ _('Alto Contraste 2') }}" aria-label="{{ _('Alto Contraste 2') }}">A</button>
+              <button class="button contrast-3" onclick="changeColorScheme('contrast-3')" title="{{ _('Alto Contraste 3') }}" aria-label="{{ _('Alto Contraste 3') }}">A</button>
               <br /><br />
             </div>
 
@@ -117,13 +117,13 @@
               <ul class="nav nav-pills">
                 <li><a href="{{ url_for('audios.client_tag') }}" class="d-block text-light border-0 d-flex align-items-center gap-1 fs-5">
                   <i class="bi bi-book m-2 lead"></i>
-                  Ver etiquetas
+                  {{ _('Ver etiquetas') }}
                   </a>
                   <br />
                 </li>
                 <li><a href="{{ url_for('audios.client_text') }}" class="d-block text-light border-0 d-flex align-items-center gap-1 fs-5">
                   <i class="bi bi-file-earmark-music m-2 lead"></i>
-                  Grabar mi audio
+                  {{ _('Grabar mi audio') }}
                 </a><br /></li>
                 <li><a href="{{ url_for('audios.client_report') }}" class="d-block text-light border-0 d-flex align-items-center gap-1 fs-5"><i class="bi bi-info-circle m-2 lead"></i>{{ _('Informes') }}</a></li>
               </ul>
@@ -140,10 +140,10 @@
 
             <div class="accessibility-bar">
               <!-- Botones para cambiar el esquema de color -->
-              <button class="button default-scheme" onclick="changeColorScheme('contrast-default')" title="Color por defecto (Reset)" aria-label="Color por Defecto">R</button>
-              <button class="button contrast-1" onclick="changeColorScheme('contrast-1')" title="Alto Contraste 1" aria-label="Alto Contraste 1">A</button>
-              <button class="button contrast-2" onclick="changeColorScheme('contrast-2')" title="Alto Contraste 2" aria-label="Alto Contraste 2">A</button>
-              <button class="button contrast-3" onclick="changeColorScheme('contrast-3')" title="Alto Contraste 3" aria-label="Alto Contraste 3">A</button>
+              <button class="button default-scheme" onclick="changeColorScheme('contrast-default')" title="{{ _('Color por defecto (Reset)') }}" aria-label="{{ _('Color por Defecto') }}">R</button>
+              <button class="button contrast-1" onclick="changeColorScheme('contrast-1')" title="{{ _('Alto Contraste 1') }}" aria-label="{{ _('Alto Contraste 1') }}">A</button>
+              <button class="button contrast-2" onclick="changeColorScheme('contrast-2')" title="{{ _('Alto Contraste 2') }}" aria-label="{{ _('Alto Contraste 2') }}">A</button>
+              <button class="button contrast-3" onclick="changeColorScheme('contrast-3')" title="{{ _('Alto Contraste 3') }}" aria-label="{{ _('Alto Contraste 3') }}">A</button>
               <br /><br />
             </div>
 

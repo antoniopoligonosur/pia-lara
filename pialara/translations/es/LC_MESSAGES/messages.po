@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-04-27 15:05+0200\n"
+"POT-Creation-Date: 2026-04-27 15:16+0200\n"
 "PO-Revision-Date: 2026-04-27 15:05+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: es\n"
@@ -17,6 +17,10 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.18.0\n"
+
+#: pialara/templates/layout.html:26
+msgid "PIA FP Lara"
+msgstr ""
 
 #: pialara/templates/layout.html:63 pialara/templates/layout.html:111
 msgid "Usuarios"
@@ -31,12 +35,32 @@ msgstr ""
 msgid "Informes"
 msgstr ""
 
-#: pialara/templates/layout.html:68
+#: pialara/templates/layout.html:68 pialara/templates/layout.html:120
 msgid "Ver etiquetas"
 msgstr ""
 
-#: pialara/templates/layout.html:69
+#: pialara/templates/layout.html:69 pialara/templates/layout.html:126
 msgid "Grabar mi audio"
+msgstr ""
+
+#: pialara/templates/layout.html:86 pialara/templates/layout.html:143
+msgid "Color por defecto (Reset)"
+msgstr ""
+
+#: pialara/templates/layout.html:86 pialara/templates/layout.html:143
+msgid "Color por Defecto"
+msgstr ""
+
+#: pialara/templates/layout.html:87 pialara/templates/layout.html:144
+msgid "Alto Contraste 1"
+msgstr ""
+
+#: pialara/templates/layout.html:88 pialara/templates/layout.html:145
+msgid "Alto Contraste 2"
+msgstr ""
+
+#: pialara/templates/layout.html:89 pialara/templates/layout.html:146
+msgid "Alto Contraste 3"
 msgstr ""
 
 #: pialara/templates/layout.html:94 pialara/templates/layout.html:155
