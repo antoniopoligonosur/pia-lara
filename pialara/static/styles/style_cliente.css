@@ -669,3 +669,35 @@ div.container-paginacion {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   }
 }
+
+/* Language Toggle */
+.lang-toggle-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.lang-toggle-btn {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 5px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+  background-color: transparent;
+  font-size: 0.9rem;
+}
+
+.lang-toggle-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  text-decoration: none;
+}
+
+.lang-toggle-btn.active {
+  background-color: #629ff4;
+  border-color: #629ff4;
+  color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
