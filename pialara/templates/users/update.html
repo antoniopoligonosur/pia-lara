@@ -127,10 +127,10 @@
             <div class="mb-3">
               <label for="cliente-sexo" class="form-label">{{ _('Sexo') }}</label>
               <select class="form-select" id="cliente-sexo" name="sexo" required>
-                <option value="H" {% if model.perfil.participante.sexo == "H" %} selected {% endif %}>Hombre</option>
-                <option value="M" {% if model.perfil.participante.sexo == "M" %} selected {% endif %}>Mujer</option>
-                <option value="A" {% if model.perfil.participante.sexo == "A" %} selected {% endif %}>Ambiguo</option>
-                <option value="T" {% if model.perfil.participante.sexo == "T" %} selected {% endif %}>Trans</option>
+                <option value="H" {% if model.perfil.participante.sexo == "H" %} selected {% endif %}>{{ _('Hombre') }}</option>
+                <option value="M" {% if model.perfil.participante.sexo == "M" %} selected {% endif %}>{{ _('Mujer') }}</option>
+                <option value="A" {% if model.perfil.participante.sexo == "A" %} selected {% endif %}>{{ _('Ambiguo') }}</option>
+                <option value="T" {% if model.perfil.participante.sexo == "T" %} selected {% endif %}>{{ _('Trans') }}</option>
               </select>
             </div>    
             
@@ -183,22 +183,22 @@
               <label for="observaciones" class="form-label">{{ _('Observaciones') }}</label>
               <textarea class="form-control" id="observaciones" name="observaciones">{{model.perfil.observaciones}}</textarea>
             </div>
-            <h2>Preferencias</h2>
+            <h2>{{ _('Preferencias') }}</h2>
             <div class="text-center mt-3">
               <a href="{{ url_for('users.update_pass_get',id=model._id ) }}" class="btn btn-success">
-                  <i class="bi bi-plus-square"></i>&nbsp;&nbsp;&nbsp;Cambiar Contraseña
+                  <i class="bi bi-plus-square"></i>&nbsp;&nbsp;&nbsp;{{ _('Cambiar Contraseña') }}
               </a>
             </div>
   
             <hr>
-            <label for="email" class="form-label">Tamaño de texto</label>
+            <label for="email" class="form-label">{{ _('Tamaño de texto') }}</label>
             <div>         
               <button type="button" class="btn btn-secondary" onclick="changeSize(1)" {% if model.font_size == 1 %}disabled{% endif %}>1x</button>
               <button type="button" class="btn btn-secondary" onclick="changeSize(1.25)" {% if model.font_size == 1.25 %}disabled{% endif %}>1.25x</button>
               <button type="button" class="btn btn-secondary" onclick="changeSize(1.5)" {% if model.font_size == 1.5 %}disabled{% endif %}>1.5x</button>
             </div>
             <input type="hidden" id="font_size" name="font_size" value="{{model.font_size}}"/>
-            <p id="textoEjemplo" class="mt-3">Texto de ejemplo</p>
+            <p id="textoEjemplo" class="mt-3">{{ _('Texto de ejemplo') }}</p>
           </div>
         </div>
 
@@ -240,10 +240,10 @@
             <div class="mb-3">
               <label for="cliente-sexo" class="form-label">{{ _('Sexo') }}</label>
               <select class="form-select" id="cliente-sexo" name="sexo" required>
-                <option value="H" {% if model.sexo == "H" %} selected {% endif %}>Hombre</option>
-                <option value="M" {% if model.sexo == "M" %} selected {% endif %}>Mujer</option>
-                <option value="A" {% if model.sexo == "A" %} selected {% endif %}>Ambiguo</option>
-                <option value="T" {% if model.sexo == "T" %} selected {% endif %}>Trans</option>
+                <option value="H" {% if model.sexo == "H" %} selected {% endif %}>{{ _('Hombre') }}</option>
+                <option value="M" {% if model.sexo == "M" %} selected {% endif %}>{{ _('Mujer') }}</option>
+                <option value="A" {% if model.sexo == "A" %} selected {% endif %}>{{ _('Ambiguo') }}</option>
+                <option value="T" {% if model.sexo == "T" %} selected {% endif %}>{{ _('Trans') }}</option>
               </select>
             </div>    
             
@@ -303,22 +303,22 @@
               <label for="observaciones" class="form-label">{{ _('Observaciones') }}</label>
               <textarea class="form-control" id="observaciones" name="observaciones">{{model.observaciones}}</textarea>
             </div>
-            <h2>Preferencias</h2>
+            <h2>{{ _('Preferencias') }}</h2>
             <div class="text-center mt-3">
               <a href="{{ url_for('users.update_pass_get',id=model._id ) }}" class="btn btn-success">
-                  <i class="bi bi-plus-square"></i>&nbsp;&nbsp;&nbsp;Cambiar Contraseña
+                  <i class="bi bi-plus-square"></i>&nbsp;&nbsp;&nbsp;{{ _('Cambiar Contraseña') }}
               </a>
             </div>
   
             <hr>
-            <label for="email" class="form-label">Tamaño de texto</label>
+            <label for="email" class="form-label">{{ _('Tamaño de texto') }}</label>
             <div>         
               <button type="button" class="btn btn-secondary" onclick="changeSize(1)" {% if model.font_size == 1 %}disabled{% endif %}>1x</button>
               <button type="button" class="btn btn-secondary" onclick="changeSize(1.25)" {% if model.font_size == 1.25 %}disabled{% endif %}>1.25x</button>
               <button type="button" class="btn btn-secondary" onclick="changeSize(1.5)" {% if model.font_size == 1.5 %}disabled{% endif %}>1.5x</button>
             </div>
             <input type="hidden" id="font_size" name="font_size" value="{{model.font_size}}"/>
-            <p id="textoEjemplo" class="mt-3">Texto de ejemplo</p>
+            <p id="textoEjemplo" class="mt-3">{{ _('Texto de ejemplo') }}</p>
           </div>
         </div>
 

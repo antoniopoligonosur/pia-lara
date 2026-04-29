@@ -471,3 +471,27 @@ msgstr "The audio has been stored successfully."
 msgid "Siguiente Frase"
 msgstr "Next Phrase"
 
+msgid "Preferencias"
+msgstr "Preferences"
+
+msgid "Cambiar Contraseña"
+msgstr "Change Password"
+
+msgid "Tamaño de texto"
+msgstr "Text size"
+
+msgid "Texto de ejemplo"
+msgstr "Sample text"
+
+msgid "Hombre"
+msgstr "Man"
+
+msgid "Mujer"
+msgstr "Woman"
+
+msgid "Ambiguo"
+msgstr "Ambiguous"
+
+msgid "Trans"
+msgstr "Trans"
+
