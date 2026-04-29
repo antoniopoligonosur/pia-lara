@@ -408,3 +408,60 @@ msgstr "Technical Information"
 msgid "Actualizar"
 msgstr "Update"
 
+msgid "Nombre y Apellidos"
+msgstr "Name and Surnames"
+
+msgid "Fecha de nacimiento"
+msgstr "Date of birth"
+
+msgid "Provincia"
+msgstr "Province"
+
+msgid "Sexo"
+msgstr "Gender"
+
+msgid "Entidad / Asociación"
+msgstr "Entity / Association"
+
+msgid "Técnico"
+msgstr "Technician"
+
+msgid "Observaciones"
+msgstr "Observations"
+
+msgid "Enero"
+msgstr "January"
+
+msgid "Febrero"
+msgstr "February"
+
+msgid "Marzo"
+msgstr "March"
+
+msgid "Abril"
+msgstr "April"
+
+msgid "Mayo"
+msgstr "May"
+
+msgid "Junio"
+msgstr "June"
+
+msgid "Julio"
+msgstr "July"
+
+msgid "Agosto"
+msgstr "August"
+
+msgid "Septiembre"
+msgstr "September"
+
+msgid "Octubre"
+msgstr "October"
+
+msgid "Noviembre"
+msgstr "November"
+
+msgid "Diciembre"
+msgstr "December"
+

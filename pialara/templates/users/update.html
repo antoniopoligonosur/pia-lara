@@ -91,7 +91,7 @@
           <div class="form-info-section" id="client-info">
             <h2>{{ _('Datos de la persona') }} <em>{{ _('Donante de voz') }}</em></h2>
             <div class="mb-3">
-              <label for="cliente-nombre" class="form-label">Nombre y Apellidos</label>
+              <label for="cliente-nombre" class="form-label">{{ _('Nombre y Apellidos') }}</label>
               <input type="text" class="form-control" id="cliente-nombre" name="nombre_cliente" required value="{{model.perfil.participante.nombre}}"/>
             </div>
             <div class="mb-3">
@@ -101,7 +101,7 @@
 
             {% set fnac = model.fecha_nacimiento.strftime('%Y-%m-%d') %}
             <div class="mb-3">
-              <label for="cliente-fecha_nacimiento" class="form-label">Fecha de nacimiento</label>
+              <label for="cliente-fecha_nacimiento" class="form-label">{{ _('Fecha de nacimiento') }}</label>
               <input type="date" class="form-control" id="cliente-fecha_nacimiento" name="fnac_cliente" required value="{{fnac}}" />
             </div>
 
@@ -114,7 +114,7 @@
               <input type="text" class="form-control" id="cliente-localidad" name="localidad_cliente" required value="{{model.perfil.participante.localidad}}" />
             </div>
             <div class="mb-3">
-              <label for="cliente-provincia" class="form-label">Provincia</label>
+              <label for="cliente-provincia" class="form-label">{{ _('Provincia') }}</label>
               <select class="form-select" id="provincia" name="provincia" required>
                 {% for item_provincia in datos_aux.provincias %}
                   <option value="{{ item_provincia }}" {% if item_provincia == model.perfil.participante.provincia %}selected{% endif %}>
@@ -125,7 +125,7 @@
             </div> 
             
             <div class="mb-3">
-              <label for="cliente-sexo" class="form-label">Sexo</label>
+              <label for="cliente-sexo" class="form-label">{{ _('Sexo') }}</label>
               <select class="form-select" id="cliente-sexo" name="sexo" required>
                 <option value="H" {% if model.perfil.participante.sexo == "H" %} selected {% endif %}>Hombre</option>
                 <option value="M" {% if model.perfil.participante.sexo == "M" %} selected {% endif %}>Mujer</option>
@@ -164,7 +164,7 @@
               <input type="email" class="form-control" id="email" name="email" required value="{{model.mail}}"/>
             </div>
             <div class="mb-3">
-              <label for="tecnico" class="form-label">Técnico</label>
+              <label for="tecnico" class="form-label">{{ _('Técnico') }}</label>
               <div class="d-flex">
                 <input type="text" class="form-control" id="tecnico" name="tecnico" value="{{model.parent}}" disabled />
                 {%if rol == "admin" %}
@@ -180,7 +180,7 @@
             </div>
             {% endif %}
             <div class="mb-3">
-              <label for="observaciones" class="form-label">Observaciones</label>
+              <label for="observaciones" class="form-label">{{ _('Observaciones') }}</label>
               <textarea class="form-control" id="observaciones" name="observaciones">{{model.perfil.observaciones}}</textarea>
             </div>
             <h2>Preferencias</h2>
@@ -217,17 +217,17 @@
           <div class="form-info-section" id="client-info">
             <h2>{{ _('Datos de la persona') }} <em>{{ _('Donante de voz') }}</em></h2>
             <div class="mb-3">
-              <label for="cliente-nombre" class="form-label">Nombre y Apellidos</label>
+              <label for="cliente-nombre" class="form-label">{{ _('Nombre y Apellidos') }}</label>
               <input type="text" class="form-control" id="cliente-nombre" name="nombre_cliente" required value="{{model.nombre}}"/>
             </div>
 
             {% set fnac = model.fecha_nacimiento.strftime('%Y-%m-%d') %}
             <div class="mb-3">
-              <label for="cliente-fecha_nacimiento" class="form-label">Fecha de nacimiento</label>
+              <label for="cliente-fecha_nacimiento" class="form-label">{{ _('Fecha de nacimiento') }}</label>
               <input type="date" class="form-control" id="cliente-fecha_nacimiento" name="fnac_cliente" required value="{{fnac}}" />
             </div>
             <div class="mb-3">
-              <label for="cliente-provincia" class="form-label">Provincia</label>
+              <label for="cliente-provincia" class="form-label">{{ _('Provincia') }}</label>
               <select class="form-select" id="provincia" name="provincia" required>
                 {% for item_provincia in datos_aux.provincias %}
                   <option value="{{ item_provincia }}" {% if item_provincia == model.provincia %}selected{% endif %}>
@@ -238,7 +238,7 @@
             </div> 
             
             <div class="mb-3">
-              <label for="cliente-sexo" class="form-label">Sexo</label>
+              <label for="cliente-sexo" class="form-label">{{ _('Sexo') }}</label>
               <select class="form-select" id="cliente-sexo" name="sexo" required>
                 <option value="H" {% if model.sexo == "H" %} selected {% endif %}>Hombre</option>
                 <option value="M" {% if model.sexo == "M" %} selected {% endif %}>Mujer</option>
@@ -280,11 +280,11 @@
               <input type="email" class="form-control" id="email" name="email" required value="{{model.mail}}"/>
             </div>
             <div class="mb-3">
-              <label for="entidad" class="form-label">Entidad / Asociación</label>
+              <label for="entidad" class="form-label">{{ _('Entidad / Asociación') }}</label>
               <input type="text" class="form-control" id="entidad" name="entidad" value="{{model.entidad}}" />
             </div>
             <div class="mb-3">
-              <label for="tecnico" class="form-label">Técnico</label>
+              <label for="tecnico" class="form-label">{{ _('Técnico') }}</label>
               <div class="d-flex">
                 <input type="text" class="form-control" id="tecnico" name="tecnico" value="{{model.parent}}" disabled />
                 {%if rol == "admin" %}
@@ -300,7 +300,7 @@
             </div>
             {% endif %}
             <div class="mb-3">
-              <label for="observaciones" class="form-label">Observaciones</label>
+              <label for="observaciones" class="form-label">{{ _('Observaciones') }}</label>
               <textarea class="form-control" id="observaciones" name="observaciones">{{model.observaciones}}</textarea>
             </div>
             <h2>Preferencias</h2>

@@ -12,6 +12,7 @@ from flask import Blueprint, render_template
 from flask import (
     Blueprint, flash, redirect, render_template, request, url_for, jsonify, session
 )
+from flask_babel import _
 from flask_login import login_required, current_user
 from werkzeug.utils import secure_filename
 
@@ -749,8 +750,8 @@ def calendario_rachas():
         next_month = 1
         next_year += 1
 
-    month_name = ["", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
-                  "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"][month]
+    month_name = ["", _("Enero"), _("Febrero"), _("Marzo"), _("Abril"), _("Mayo"), _("Junio"),
+                  _("Julio"), _("Agosto"), _("Septiembre"), _("Octubre"), _("Noviembre"), _("Diciembre")][month]
 
     today = datetime.now()
     
