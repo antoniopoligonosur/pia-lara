@@ -155,7 +155,7 @@ msgstr "Close"
 msgid ""
 "Para ayudarnos a entrenar la inteligencia artificial, sigue estos "
 "consejos:"
-msgstr ""
+msgstr "To help us train the artificial intelligence, follow these tips:"
 
 #: pialara/templates/audios/client_record.html:198
 #: pialara/templates/audios/client_text.html:111
@@ -464,4 +464,10 @@ msgstr "November"
 
 msgid "Diciembre"
 msgstr "December"
+
+msgid "El audio ha sido almacenado correctamente."
+msgstr "The audio has been stored successfully."
+
+msgid "Siguiente Frase"
+msgstr "Next Phrase"
 

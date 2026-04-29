@@ -229,5 +229,10 @@
 
 <script src="https://unpkg.com/sweetalert@2.1.2/dist/sweetalert.min.js"></script>
 <script src="{{ url_for('static', filename='js/speech-synthesis.js') }}"></script>
+<script>
+    window.translations = {
+        siguiente_frase: "{{ _('Siguiente Frase') }}"
+    };
+</script>
 <script src="{{ url_for('static', filename='js/speech-recording.js') }}"></script>
 {% endblock %}

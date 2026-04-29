@@ -217,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 icon: data.status === 'ok' ? 'success' : 'error',
                 buttons: {
                     routine: {
-                        text: data.is_routine_completed ? 'Volver a Etiquetas' : (data.next_routine_url ? 'Siguiente Frase' : 'Aceptar'),
+                        text: data.is_routine_completed ? 'Volver a Etiquetas' : (data.next_routine_url ? (window.translations ? window.translations.siguiente_frase : 'Siguiente Frase') : 'Aceptar'),
                         value: 'continue_routine',
                         className: 'btn-primary'
                     },

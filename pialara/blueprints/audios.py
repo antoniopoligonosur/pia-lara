@@ -437,7 +437,7 @@ def save_record():
 
     data = {
         "status": 'ok',
-        "message": "El audio ha sido almacenado correctamente.",
+        "message": _("El audio ha sido almacenado correctamente."),
         "audio_id": str(resultAudio.inserted_id),
         "is_routine_completed": is_routine_completed,
         "next_routine_url": next_routine_url
