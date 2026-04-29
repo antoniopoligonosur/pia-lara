@@ -16,7 +16,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.18.0\n"
+"Generated-By: Babel 2.10.3\n"
 
 #: pialara/templates/layout.html:26
 msgid "PIA FP Lara"
@@ -305,4 +305,106 @@ msgstr "PIA Lara - Data Capture"
 #: pialara/templates/main/index.html:8
 msgid "Aplicación de captura de datos para el PIA Lara"
 msgstr "Data capture app for PIA Lara"
+
+msgid "Calendario de Rachas"
+msgstr "Streak Calendar"
+
+msgid "Anterior"
+msgstr "Previous"
+
+msgid "Siguiente"
+msgstr "Next"
+
+msgid "Lun"
+msgstr "Mon"
+
+msgid "Mar"
+msgstr "Tue"
+
+msgid "Mié"
+msgstr "Wed"
+
+msgid "Jue"
+msgstr "Thu"
+
+msgid "Vie"
+msgstr "Fri"
+
+msgid "Sáb"
+msgstr "Sat"
+
+msgid "Dom"
+msgstr "Sun"
+
+msgid "Audios:"
+msgstr "Audios:"
+
+msgid "Hoy"
+msgstr "Today"
+
+msgid "Día con audio"
+msgstr "Day with audio"
+
+msgid "Total Audios"
+msgstr "Total Audios"
+
+msgid "Fonemas Únicos"
+msgstr "Unique Phonemes"
+
+msgid "Últimas"
+msgstr "Last"
+
+msgid "Sin datos"
+msgstr "No data"
+
+msgid "Más Frecuentes"
+msgstr "Most Frequent"
+
+msgid "Menos Frecuentes"
+msgstr "Least Frequent"
+
+msgid "Fonemas"
+msgstr "Phonemes"
+
+msgid "Últimos"
+msgstr "Last"
+
+msgid "Más Practicados"
+msgstr "Most Practiced"
+
+msgid "Menos Practicados"
+msgstr "Least Practiced"
+
+msgid "Audios por Categoría"
+msgstr "Audios by Category"
+
+msgid "Categoría"
+msgstr "Category"
+
+msgid "Cantidad"
+msgstr "Quantity"
+
+msgid "Volver"
+msgstr "Back"
+
+msgid "Actualizar cliente"
+msgstr "Update Client"
+
+msgid "Datos de la asociación"
+msgstr "Association Data"
+
+msgid "Datos de la persona Tutor/a - Madre/Padre"
+msgstr "Tutor/Parent Data"
+
+msgid "Datos de la persona"
+msgstr "Person Data"
+
+msgid "Donante de voz"
+msgstr "Voice Donor"
+
+msgid "Información técnica"
+msgstr "Technical Information"
+
+msgid "Actualizar"
+msgstr "Update"
 

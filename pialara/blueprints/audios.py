@@ -2,6 +2,7 @@ import os.path
 import boto3
 import random
 import re
+import calendar
 from bson import ObjectId  # Asegúrate de importar ObjectId desde bson
 
 from bson.objectid import ObjectId
@@ -688,4 +689,84 @@ def client_report(id=None):
         fonemas_mas_grabados=fonemas_mas_grabados,
         fonemas_menos_grabados=fonemas_menos_grabados,
         total_fonemas_unicos=total_fonemas_unicos
+    )
+
+@bp.route('/calendario-rachas')
+@login_required
+def calendario_rachas():
+    # Obtener el año y mes de la query string, o usar el actual
+    try:
+        year = int(request.args.get('year', datetime.now().year))
+        month = int(request.args.get('month', datetime.now().month))
+    except ValueError:
+        year = datetime.now().year
+        month = datetime.now().month
+
+    # Asegurar que el mes y año son válidos
+    if month < 1 or month > 12:
+        month = datetime.now().month
+    if year < 2000 or year > 2100:
+        year = datetime.now().year
+
+    # Obtener grabaciones del usuario para este mes/año
+    audios_model = Audios()
+    
+    # Inicio y fin del mes para la consulta
+    fecha_inicio = datetime(year, month, 1)
+    # El último día del mes
+    ultimo_dia = calendar.monthrange(year, month)[1]
+    fecha_fin = datetime(year, month, ultimo_dia, 23, 59, 59)
+
+    match_filter = {
+        "usuario.id": current_user.id,
+        "fecha": {"$gte": fecha_inicio, "$lte": fecha_fin}
+    }
+
+    # Consultamos los audios del mes actual
+    cursor = audios_model.find(match_filter)
+    
+    # Contamos la cantidad de audios grabados por cada día del mes
+    audios_por_dia = {}
+    for doc in cursor:
+        if "fecha" in doc:
+            dia = doc["fecha"].day
+            audios_por_dia[dia] = audios_por_dia.get(dia, 0) + 1
+
+    # Generamos la estructura del calendario para el mes indicado
+    cal = calendar.monthcalendar(year, month)
+    # cal es una lista de listas (semanas), donde 0 indica días fuera del mes
+
+    # Calculamos enlaces para mes anterior y siguiente
+    prev_month = month - 1
+    prev_year = year
+    if prev_month == 0:
+        prev_month = 12
+        prev_year -= 1
+
+    next_month = month + 1
+    next_year = year
+    if next_month == 13:
+        next_month = 1
+        next_year += 1
+
+    month_name = ["", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+                  "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"][month]
+
+    today = datetime.now()
+    
+    return render_template(
+        'audios/calendario_rachas.html',
+        racha_actual=getattr(current_user, 'racha_actual', 0),
+        calendario=cal,
+        month=month,
+        year=year,
+        month_name=month_name,
+        audios_por_dia=audios_por_dia,
+        prev_month=prev_month,
+        prev_year=prev_year,
+        next_month=next_month,
+        next_year=next_year,
+        today_day=today.day,
+        today_month=today.month,
+        today_year=today.year
     )

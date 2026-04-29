@@ -18,7 +18,7 @@
             <div class="card border-dark shadow-sm h-100">
                 <div class="card-body d-flex justify-content-between align-items-center p-3">
                     <div>
-                        <h6 class="text-secondary text-uppercase mb-0">Total Audios</h6>
+                        <h6 class="text-secondary text-uppercase mb-0">{{ _('Total Audios') }}</h6>
                         <span class="fs-2 fw-bold text-dark lh-1">{{ total_audios }}</span>
                     </div>
                     <i class="bi bi-mic-fill fs-2 text-secondary opacity-25"></i>
@@ -29,7 +29,7 @@
             <div class="card border-secondary shadow-sm h-100">
                 <div class="card-body d-flex justify-content-between align-items-center p-3">
                     <div>
-                        <h6 class="text-secondary text-uppercase mb-0">Fonemas Únicos</h6>
+                        <h6 class="text-secondary text-uppercase mb-0">{{ _('Fonemas Únicos') }}</h6>
                         <span class="fs-2 fw-bold text-dark lh-1">{{ total_fonemas_unicos }}</span>
                     </div>
                     <i class="bi bi-soundwave fs-2 text-secondary opacity-25"></i>
@@ -40,13 +40,13 @@
 
     <div class="row g-2 mb-3 h-auto" style="height: auto !important;">
         <div class="col-12">
-            <h6 class="border-bottom pb-1 mb-2 text-dark fw-bold"><i class="bi bi-tags-fill me-2"></i>Etiquetas</h6>
+            <h6 class="border-bottom pb-1 mb-2 text-dark fw-bold"><i class="bi bi-tags-fill me-2"></i>{{ _('Etiquetas') }}</h6>
         </div>
         
         <div class="col-lg-4 col-md-6 mb-2">
             <div class="card border-0 bg-light shadow-sm h-100">
                 <div class="card-header bg-dark text-white text-center py-1">
-                    <small class="fw-bold text-uppercase">Últimas</small>
+                    <small class="fw-bold text-uppercase">{{ _('Últimas') }}</small>
                 </div>
                 <ul class="list-group list-group-flush bg-transparent">
                     {% for item in ultimas_tags_grabadas %}
@@ -54,7 +54,7 @@
                         <span class="fw-bold text-dark m-auto">{{ item.tag }}</span>
                     </li>
                     {% else %}
-                    <li class="list-group-item bg-transparent text-center text-muted py-1"><small>Sin datos</small></li>
+                    <li class="list-group-item bg-transparent text-center text-muted py-1"><small>{{ _('Sin datos') }}</small></li>
                     {% endfor %}
                 </ul>
             </div>
@@ -63,7 +63,7 @@
         <div class="col-lg-4 col-md-6 mb-2">
             <div class="card border-secondary shadow-sm h-100">
                 <div class="card-header bg-white border-bottom border-dark text-center py-1">
-                    <small class="fw-bold text-uppercase text-dark" >Más Frecuentes</small>
+                    <small class="fw-bold text-uppercase text-dark" >{{ _('Más Frecuentes') }}</small>
                 </div>
                 <ul class="list-group list-group-flush">
                     {% for item in mas_grabadas %}
@@ -79,7 +79,7 @@
         <div class="col-lg-4 col-md-6 mb-2">
             <div class="card border-secondary shadow-sm h-100">
                 <div class="card-header bg-white border-bottom border-secondary text-center py-1">
-                    <small class="fw-bold text-uppercase text-secondary">Menos Frecuentes</small>
+                    <small class="fw-bold text-uppercase text-secondary">{{ _('Menos Frecuentes') }}</small>
                 </div>
                 <ul class="list-group list-group-flush">
                     {% for item in menos_grabadas %}
@@ -95,13 +95,13 @@
 
     <div class="row g-2 mb-3 h-auto" style="height: auto !important;">
         <div class="col-12">
-            <h6 class="border-bottom pb-1 mb-2 text-dark fw-bold"><i class="bi bi-mic-fill me-2"></i>Fonemas</h6>
+            <h6 class="border-bottom pb-1 mb-2 text-dark fw-bold"><i class="bi bi-mic-fill me-2"></i>{{ _('Fonemas') }}</h6>
         </div>
         
         <div class="col-lg-4 col-md-6 mb-2">
             <div class="card border-0 bg-light shadow-sm h-100">
                 <div class="card-header bg-secondary text-white text-center py-1">
-                    <small class="fw-bold text-uppercase">Últimos</small>
+                    <small class="fw-bold text-uppercase">{{ _('Últimos') }}</small>
                 </div>
                 <ul class="list-group list-group-flush bg-transparent">
                     {% for item in ultimos_fonemas %}
@@ -109,7 +109,7 @@
                         <span class="fw-bold text-dark text-uppercase m-auto">{{ item.fonema }}</span>
                     </li>
                     {% else %}
-                    <li class="list-group-item bg-transparent text-center text-muted py-1"><small>Sin datos</small></li>
+                    <li class="list-group-item bg-transparent text-center text-muted py-1"><small>{{ _('Sin datos') }}</small></li>
                     {% endfor %}
                 </ul>
             </div>
@@ -118,7 +118,7 @@
         <div class="col-lg-4 col-md-6 mb-2">
             <div class="card border-secondary shadow-sm h-100">
                 <div class="card-header bg-white border-bottom border-dark text-center py-1">
-                    <small class="fw-bold text-uppercase text-dark">Más Practicados</small>
+                    <small class="fw-bold text-uppercase text-dark">{{ _('Más Practicados') }}</small>
                 </div>
                 <ul class="list-group list-group-flush">
                     {% for item in fonemas_mas_grabados %}
@@ -134,7 +134,7 @@
         <div class="col-lg-4 col-md-6 mb-2">
             <div class="card border-secondary shadow-sm h-100">
                 <div class="card-header bg-white border-bottom border-secondary text-center py-1">
-                    <small class="fw-bold text-uppercase text-secondary">Menos Practicados</small>
+                    <small class="fw-bold text-uppercase text-secondary">{{ _('Menos Practicados') }}</small>
                 </div>
                 <ul class="list-group list-group-flush">
                     {% for item in fonemas_menos_grabados %}
@@ -150,13 +150,13 @@
 
     <div class="card border-secondary shadow-sm h-auto" style="height: auto !important;">
         <div class="card-body p-2">
-            <h6 class="text-center mb-2 fw-bold">Audios por Categoría</h6>
+            <h6 class="text-center mb-2 fw-bold">{{ _('Audios por Categoría') }}</h6>
             <div class="table-responsive">
                 <table class="table table-sm table-striped table-hover mb-0" id="categorias-tabla">
                     <thead class="table-dark text-center">
                         <tr>
-                            <th onclick="ordenarTabla(0)" style="cursor:pointer;">Categoría <i class="bi bi-sort-down"></i></th>
-                            <th onclick="ordenarTabla(1)" style="cursor:pointer;">Cantidad <i class="bi bi-sort-down"></i></th>
+                            <th onclick="ordenarTabla(0)" style="cursor:pointer;">{{ _('Categoría') }} <i class="bi bi-sort-down"></i></th>
+                            <th onclick="ordenarTabla(1)" style="cursor:pointer;">{{ _('Cantidad') }} <i class="bi bi-sort-down"></i></th>
                         </tr>
                     </thead>
                     <tbody class="text-center">

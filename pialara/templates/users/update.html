@@ -13,12 +13,12 @@
 {% endwith %}
 
 <div class="mx-5">
-  <button class="btn btn-secondary" onclick="window.history.back()">Volver</button>
+  <button class="btn btn-secondary" onclick="window.history.back()">{{ _('Volver') }}</button>
 </div>
 
   <div class="text-center p-3">
     <img src="/static/img/microfono.svg" alt="microfono" width="100" height="100">
-    <h1>Actualizar cliente</h1>
+    <h1>{{ _('Actualizar cliente') }}</h1>
   </div>
 
   <div class="tab-content py-4" id="nav-tabContent">
@@ -27,7 +27,7 @@
         <div class="form-wrapper">
           {% if rol == "admin" or rol == "tecnico" %}
           <div class="form-info-section" id="asoc-info">
-            <h2>Datos de la asociación</h2>
+            <h2>{{ _('Datos de la asociación') }}</h2>
             <div class="mb-3">
               <label for="entidad-nombre" class="form-label">Nombre de la Entidad</label>
               <input type="text" class="form-control" id="entidad-nombre" name="nombre_entidad" required value="{{ model.perfil.entidad.nombre }}" />
@@ -65,7 +65,7 @@
             </fieldset>
           </div>
           <div class="form-info-section" id="parent-info">
-            <h2>Datos de la persona Tutor/a - Madre/Padre</h2>
+            <h2>{{ _('Datos de la persona Tutor/a - Madre/Padre') }}</h2>
             <div class="mb-3">
               <label for="tutor-nombre" class="form-label">Nombre de la persona madre/padre o persona encargada</label>
               <input type="text" class="form-control" id="tutor-nombre" name="nombre_tutor" required value="{{ model.perfil.tutor.nombre }}" />
@@ -89,7 +89,7 @@
           </div>
           {% endif %}
           <div class="form-info-section" id="client-info">
-            <h2>Datos de la persona <em>Donante de voz</em></h2>
+            <h2>{{ _('Datos de la persona') }} <em>{{ _('Donante de voz') }}</em></h2>
             <div class="mb-3">
               <label for="cliente-nombre" class="form-label">Nombre y Apellidos</label>
               <input type="text" class="form-control" id="cliente-nombre" name="nombre_cliente" required value="{{model.perfil.participante.nombre}}"/>
@@ -158,7 +158,7 @@
             {% endif %}
           </div>
           <div class="form-info-section" id="info-tecnica">
-            <h2>Información técnica</h2>
+            <h2>{{ _('Información técnica') }}</h2>
             <div class="mb-3">
               <label for="email" class="form-label">Email</label>
               <input type="email" class="form-control" id="email" name="email" required value="{{model.mail}}"/>
@@ -206,7 +206,7 @@
 
         <div class="mb-3">
           <button class="btn btn-primary w-100 shadow" type="submit" id="actualizarBtn" style="width: 100%;">
-            <i class="bi bi-plus-square me-2"></i>Actualizar
+            <i class="bi bi-plus-square me-2"></i>{{ _('Actualizar') }}
           </button>
         </div>
 
@@ -215,7 +215,7 @@
       <form class="container" method="POST" style="max-width: 20rem">
         <div class="form-wrapper">
           <div class="form-info-section" id="client-info">
-            <h2>Datos de la persona <em>Donante de voz</em></h2>
+            <h2>{{ _('Datos de la persona') }} <em>{{ _('Donante de voz') }}</em></h2>
             <div class="mb-3">
               <label for="cliente-nombre" class="form-label">Nombre y Apellidos</label>
               <input type="text" class="form-control" id="cliente-nombre" name="nombre_cliente" required value="{{model.nombre}}"/>
@@ -274,7 +274,7 @@
             {% endif %}
           </div>
           <div class="form-info-section" id="info-tecnica">
-            <h2>Información técnica</h2>
+            <h2>{{ _('Información técnica') }}</h2>
             <div class="mb-3">
               <label for="email" class="form-label">Email</label>
               <input type="email" class="form-control" id="email" name="email" required value="{{model.mail}}"/>
@@ -326,14 +326,14 @@
 
         <div class="mb-3">
           <button class="btn btn-primary w-100 shadow" type="submit" id="actualizarBtn" style="width: 100%;">
-            <i class="bi bi-plus-square me-2"></i>Actualizar
+            <i class="bi bi-plus-square me-2"></i>{{ _('Actualizar') }}
           </button>
         </div>
 
       </form>
     {% endif %}
       <div class="text-end mx-5">
-        <button class="btn btn-secondary" style="width: 100%;" onclick="window.history.back()">Volver</button>
+        <button class="btn btn-secondary" style="width: 100%;" onclick="window.history.back()">{{ _('Volver') }}</button>
       </div>
   </div>
   <script src="{{ url_for('static', filename='js/font_size.js') }}"></script>
