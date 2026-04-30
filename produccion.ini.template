@@ -1,8 +1,8 @@
 [LOCAL]
-SECRET_KEY = tu_secreto_seguro_para_produccion
+SECRET_KEY = clave_secreta
 PIALARA_DB_URI = mongodb://db:27017/
-PIALARA_DB_NAME = pialara
-BUCKET_NAME = pialara
+PIALARA_DB_NAME = prelara
+BUCKET_NAME = prelara
 GRADIO_URL = http://localhost:8080/gradio
 AWS_ACCESS_KEY_ID = mock_key
 AWS_SECRET_ACCESS_KEY = mock_secret
