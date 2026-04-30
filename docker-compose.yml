@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  db:
+    image: mongo:6.0
+    container_name: pialara_mongo
+    restart: always
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - pialara_net
+
+  web:
+    build: .
+    container_name: pialara_web
+    restart: always
+    volumes:
+      # Inyecta el archivo .ini de producción directamente al contenedor
+      - ./produccion.ini:/app/.ini
+      # Persiste los audios en el host local mapeando a la ruta estática
+      - ./audios_local:/app/pialara/static/audios
+    depends_on:
+      - db
+    networks:
+      - pialara_net
+
+  proxy:
+    image: nginx:alpine
+    container_name: pialara_proxy
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - web
+    networks:
+      - pialara_net
+
+volumes:
+  mongo-data:
+
+networks:
+  pialara_net:
+    driver: bridge
