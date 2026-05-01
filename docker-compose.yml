@@ -22,21 +22,42 @@ services:
     networks:
       - pialara_net
 
+  # Servicio efímero para generar el certificado solo si no existe
+  cert-generator:
+    image: alpine/openssl
+    container_name: pialara_cert_generator
+    volumes:
+      - certs:/certs
+    command: >
+      sh -c "
+      if [ ! -f /certs/server.crt ]; then
+        echo 'Generando certificado autofirmado...';
+        openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /certs/server.key -out /certs/server.crt -subj '/C=ES/ST=Local/L=Local/O=Pialara/CN=localhost';
+      else
+        echo 'Certificado ya existente, omitiendo.';
+      fi"
+
   proxy:
     image: nginx:alpine
     container_name: pialara_proxy
     restart: always
     ports:
       - "80:80"
+      - "443:443"
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - certs:/certs:ro
     depends_on:
-      - web
+      web:
+        condition: service_started
+      cert-generator:
+        condition: service_completed_successfully
     networks:
       - pialara_net
 
 volumes:
   mongo-data:
+  certs:
 
 networks:
   pialara_net:
