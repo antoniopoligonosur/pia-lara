@@ -26,10 +26,11 @@ services:
   cert-generator:
     image: alpine/openssl
     container_name: pialara_cert_generator
+    entrypoint: /bin/sh
     volumes:
       - certs:/certs
     command: >
-      sh -c "
+      -c "
       if [ ! -f /certs/server.crt ]; then
         echo 'Generando certificado autofirmado...';
         openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /certs/server.key -out /certs/server.crt -subj '/C=ES/ST=Local/L=Local/O=Pialara/CN=localhost';
