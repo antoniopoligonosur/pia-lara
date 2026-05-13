@@ -387,11 +387,13 @@ def save_record():
     ultima = getattr(current_user, 'ultima_grabacion', None)
 
     if ultima is not None and isinstance(ultima, datetime):
-        diferencia = (hoy_date - ultima.date()).days
-        if diferencia == 1:
+        diferencia_horas = (hoy - ultima).total_seconds() / 3600.0
+        diferencia_dias = (hoy_date - ultima.date()).days
+
+        if diferencia_horas > 24:
+            racha = 0
+        elif diferencia_dias > 0:
             racha += 1
-        elif diferencia > 1:
-            racha = 1
     else:
         racha = 1
 
