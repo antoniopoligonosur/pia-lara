@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-04-27 15:27+0200\n"
+"POT-Creation-Date: 2026-05-13 20:24+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,55 +17,191 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.18.0\n"
 
+#: pialara/blueprints/audios.py:447
+msgid "El audio ha sido almacenado correctamente."
+msgstr ""
+
+#: pialara/blueprints/audios.py:760
+msgid "Enero"
+msgstr ""
+
+#: pialara/blueprints/audios.py:760
+msgid "Febrero"
+msgstr ""
+
+#: pialara/blueprints/audios.py:760
+msgid "Marzo"
+msgstr ""
+
+#: pialara/blueprints/audios.py:760
+msgid "Abril"
+msgstr ""
+
+#: pialara/blueprints/audios.py:760
+msgid "Mayo"
+msgstr ""
+
+#: pialara/blueprints/audios.py:760
+msgid "Junio"
+msgstr ""
+
+#: pialara/blueprints/audios.py:761
+msgid "Julio"
+msgstr ""
+
+#: pialara/blueprints/audios.py:761
+msgid "Agosto"
+msgstr ""
+
+#: pialara/blueprints/audios.py:761
+msgid "Septiembre"
+msgstr ""
+
+#: pialara/blueprints/audios.py:761
+msgid "Octubre"
+msgstr ""
+
+#: pialara/blueprints/audios.py:761
+msgid "Noviembre"
+msgstr ""
+
+#: pialara/blueprints/audios.py:761
+msgid "Diciembre"
+msgstr ""
+
 #: pialara/templates/layout.html:26
 msgid "PIA FP Lara"
 msgstr ""
 
-#: pialara/templates/layout.html:63 pialara/templates/layout.html:111
+#: pialara/templates/layout.html:63 pialara/templates/layout.html:112
 msgid "Usuarios"
 msgstr ""
 
-#: pialara/templates/layout.html:64 pialara/templates/layout.html:112
+#: pialara/templates/layout.html:64 pialara/templates/layout.html:113
 msgid "Frases"
 msgstr ""
 
 #: pialara/templates/layout.html:65 pialara/templates/layout.html:70
-#: pialara/templates/layout.html:113 pialara/templates/layout.html:128
+#: pialara/templates/layout.html:114 pialara/templates/layout.html:129
 msgid "Informes"
 msgstr ""
 
-#: pialara/templates/layout.html:68 pialara/templates/layout.html:120
+#: pialara/templates/layout.html:68 pialara/templates/layout.html:121
 msgid "Ver etiquetas"
 msgstr ""
 
 #: pialara/templates/audios/client_text.html:5
 #: pialara/templates/audios/client_text.html:11
-#: pialara/templates/layout.html:69 pialara/templates/layout.html:126
+#: pialara/templates/layout.html:69 pialara/templates/layout.html:127
 msgid "Grabar mi audio"
 msgstr ""
 
-#: pialara/templates/layout.html:86 pialara/templates/layout.html:143
+#: pialara/templates/audios/calendario_rachas.html:7
+#: pialara/templates/layout.html:71 pialara/templates/layout.html:132
+msgid "Calendario de Rachas"
+msgstr ""
+
+#: pialara/templates/layout.html:87 pialara/templates/layout.html:148
 msgid "Color por defecto (Reset)"
 msgstr ""
 
-#: pialara/templates/layout.html:86 pialara/templates/layout.html:143
+#: pialara/templates/layout.html:87 pialara/templates/layout.html:148
 msgid "Color por Defecto"
 msgstr ""
 
-#: pialara/templates/layout.html:87 pialara/templates/layout.html:144
+#: pialara/templates/layout.html:88 pialara/templates/layout.html:149
 msgid "Alto Contraste 1"
 msgstr ""
 
-#: pialara/templates/layout.html:88 pialara/templates/layout.html:145
+#: pialara/templates/layout.html:89 pialara/templates/layout.html:150
 msgid "Alto Contraste 2"
 msgstr ""
 
-#: pialara/templates/layout.html:89 pialara/templates/layout.html:146
+#: pialara/templates/layout.html:90 pialara/templates/layout.html:151
 msgid "Alto Contraste 3"
 msgstr ""
 
-#: pialara/templates/layout.html:94 pialara/templates/layout.html:155
+#: pialara/templates/layout.html:95 pialara/templates/layout.html:160
 msgid "Salir"
+msgstr ""
+
+#: pialara/templates/audios/calendario_rachas.html:9
+msgid "días"
+msgstr ""
+
+#: pialara/templates/audios/calendario_rachas.html:17
+msgid "Anterior"
+msgstr ""
+
+#: pialara/templates/audios/calendario_rachas.html:22
+msgid "Siguiente"
+msgstr ""
+
+#: pialara/templates/audios/calendario_rachas.html:31
+msgid "Lun"
+msgstr ""
+
+#: pialara/templates/audios/calendario_rachas.html:32
+msgid "Mar"
+msgstr ""
+
+#: pialara/templates/audios/calendario_rachas.html:33
+msgid "Mié"
+msgstr ""
+
+#: pialara/templates/audios/calendario_rachas.html:34
+msgid "Jue"
+msgstr ""
+
+#: pialara/templates/audios/calendario_rachas.html:35
+msgid "Vie"
+msgstr ""
+
+#: pialara/templates/audios/calendario_rachas.html:36
+msgid "Sáb"
+msgstr ""
+
+#: pialara/templates/audios/calendario_rachas.html:37
+msgid "Dom"
+msgstr ""
+
+#: pialara/templates/audios/calendario_rachas.html:55
+msgid "Audios:"
+msgstr ""
+
+#: pialara/templates/audios/calendario_rachas.html:58
+#: pialara/templates/audios/calendario_rachas.html:73
+msgid "Hoy"
+msgstr ""
+
+#: pialara/templates/audios/calendario_rachas.html:74
+msgid "Día con audio"
+msgstr ""
+
+#: pialara/templates/audios/calendario_rachas.html:85
+msgid "¡Tu Rutina de Hoy!"
+msgstr ""
+
+#: pialara/templates/audios/calendario_rachas.html:86
+msgid "Hemos preparado 5 frases especialmente seleccionadas para que practiques."
+msgstr ""
+
+#: pialara/templates/audios/calendario_rachas.html:89
+msgid "Empezar Entrenamiento"
+msgstr ""
+
+#: pialara/templates/audios/calendario_rachas.html:96
+msgid "¡Racha diaria completada!"
+msgstr ""
+
+#: pialara/templates/audios/calendario_rachas.html:97
+msgid ""
+"Has completado tu entrenamiento de hoy. Vuelve mañana para continuar tu "
+"racha."
+msgstr ""
+
+#: pialara/templates/audios/calendario_rachas.html:99
+msgid "Entrenamiento Completado"
 msgstr ""
 
 #: pialara/templates/audios/client_record.html:5
@@ -226,6 +362,10 @@ msgstr ""
 msgid "Información para grabar audio"
 msgstr ""
 
+#: pialara/templates/audios/client_record.html:234
+msgid "Siguiente Frase"
+msgstr ""
+
 #: pialara/templates/audios/client_report.html:6
 #: pialara/templates/audios/client_report.html:8
 msgid "Resumen de Audios de"
@@ -235,61 +375,95 @@ msgstr ""
 msgid "Mi resumen de audios"
 msgstr ""
 
+#: pialara/templates/audios/client_report.html:21
+msgid "Total Audios"
+msgstr ""
+
+#: pialara/templates/audios/client_report.html:32
+msgid "Fonemas Únicos"
+msgstr ""
+
+#: pialara/templates/audios/client_report.html:43
 #: pialara/templates/audios/client_tag.html:5
 msgid "Etiquetas"
 msgstr ""
 
-#: pialara/templates/audios/client_tag.html:11
-msgid "Racha actual:"
+#: pialara/templates/audios/client_report.html:49
+msgid "Últimas"
 msgstr ""
 
-#: pialara/templates/audios/client_tag.html:11
-msgid "días"
+#: pialara/templates/audios/client_report.html:57
+#: pialara/templates/audios/client_report.html:112
+msgid "Sin datos"
 msgstr ""
 
-#: pialara/templates/audios/client_tag.html:31
-msgid "¡Tu Rutina de Hoy!"
+#: pialara/templates/audios/client_report.html:66
+msgid "Más Frecuentes"
 msgstr ""
 
-#: pialara/templates/audios/client_tag.html:32
-msgid "Hemos preparado 5 frases especialmente seleccionadas para que practiques."
+#: pialara/templates/audios/client_report.html:82
+msgid "Menos Frecuentes"
 msgstr ""
 
-#: pialara/templates/audios/client_tag.html:34
-msgid "Empezar Entrenamiento"
+#: pialara/templates/audios/client_report.html:98
+msgid "Fonemas"
 msgstr ""
 
-#: pialara/templates/audios/client_tag.html:45
+#: pialara/templates/audios/client_report.html:104
+msgid "Últimos"
+msgstr ""
+
+#: pialara/templates/audios/client_report.html:121
+msgid "Más Practicados"
+msgstr ""
+
+#: pialara/templates/audios/client_report.html:137
+msgid "Menos Practicados"
+msgstr ""
+
+#: pialara/templates/audios/client_report.html:153
+msgid "Audios por Categoría"
+msgstr ""
+
+#: pialara/templates/audios/client_report.html:158
+msgid "Categoría"
+msgstr ""
+
+#: pialara/templates/audios/client_report.html:159
+msgid "Cantidad"
+msgstr ""
+
+#: pialara/templates/audios/client_tag.html:25
 msgid "Buscar etiqueta..."
 msgstr ""
 
-#: pialara/templates/audios/client_tag.html:56
+#: pialara/templates/audios/client_tag.html:36
 msgid "¿Voy a tener suerte?"
 msgstr ""
 
-#: pialara/templates/audios/client_tag.html:65
+#: pialara/templates/audios/client_tag.html:45
 msgid "Audios grabados:"
 msgstr ""
 
-#: pialara/templates/audios/client_tag.html:71
+#: pialara/templates/audios/client_tag.html:51
 msgid "Últimas 5 etiquetas grabadas"
 msgstr ""
 
-#: pialara/templates/audios/client_tag.html:74
-#: pialara/templates/audios/client_tag.html:86
-#: pialara/templates/audios/client_tag.html:98
+#: pialara/templates/audios/client_tag.html:54
+#: pialara/templates/audios/client_tag.html:66
+#: pialara/templates/audios/client_tag.html:78
 msgid "Total audios grabados:"
 msgstr ""
 
-#: pialara/templates/audios/client_tag.html:83
+#: pialara/templates/audios/client_tag.html:63
 msgid "5 etiquetas más grabadas"
 msgstr ""
 
-#: pialara/templates/audios/client_tag.html:95
+#: pialara/templates/audios/client_tag.html:75
 msgid "5 etiquetas menos grabadas"
 msgstr ""
 
-#: pialara/templates/audios/client_tag.html:142
+#: pialara/templates/audios/client_tag.html:122
 msgid "Etiquetas encontradas"
 msgstr ""
 
@@ -303,5 +477,116 @@ msgstr ""
 
 #: pialara/templates/main/index.html:8
 msgid "Aplicación de captura de datos para el PIA Lara"
+msgstr ""
+
+#: pialara/templates/users/update.html:16
+#: pialara/templates/users/update.html:336
+msgid "Volver"
+msgstr ""
+
+#: pialara/templates/users/update.html:21
+msgid "Actualizar cliente"
+msgstr ""
+
+#: pialara/templates/users/update.html:30
+msgid "Datos de la asociación"
+msgstr ""
+
+#: pialara/templates/users/update.html:68
+msgid "Datos de la persona Tutor/a - Madre/Padre"
+msgstr ""
+
+#: pialara/templates/users/update.html:92
+#: pialara/templates/users/update.html:218
+msgid "Datos de la persona"
+msgstr ""
+
+#: pialara/templates/users/update.html:92
+#: pialara/templates/users/update.html:218
+msgid "Donante de voz"
+msgstr ""
+
+#: pialara/templates/users/update.html:94
+#: pialara/templates/users/update.html:220
+msgid "Nombre y Apellidos"
+msgstr ""
+
+#: pialara/templates/users/update.html:104
+#: pialara/templates/users/update.html:226
+msgid "Fecha de nacimiento"
+msgstr ""
+
+#: pialara/templates/users/update.html:117
+#: pialara/templates/users/update.html:230
+msgid "Provincia"
+msgstr ""
+
+#: pialara/templates/users/update.html:128
+#: pialara/templates/users/update.html:241
+msgid "Sexo"
+msgstr ""
+
+#: pialara/templates/users/update.html:130
+#: pialara/templates/users/update.html:243
+msgid "Hombre"
+msgstr ""
+
+#: pialara/templates/users/update.html:131
+#: pialara/templates/users/update.html:244
+msgid "Mujer"
+msgstr ""
+
+#: pialara/templates/users/update.html:132
+#: pialara/templates/users/update.html:245
+msgid "Ambiguo"
+msgstr ""
+
+#: pialara/templates/users/update.html:133
+#: pialara/templates/users/update.html:246
+msgid "Trans"
+msgstr ""
+
+#: pialara/templates/users/update.html:161
+#: pialara/templates/users/update.html:277
+msgid "Información técnica"
+msgstr ""
+
+#: pialara/templates/users/update.html:167
+#: pialara/templates/users/update.html:287
+msgid "Técnico"
+msgstr ""
+
+#: pialara/templates/users/update.html:183
+#: pialara/templates/users/update.html:303
+msgid "Observaciones"
+msgstr ""
+
+#: pialara/templates/users/update.html:186
+#: pialara/templates/users/update.html:306
+msgid "Preferencias"
+msgstr ""
+
+#: pialara/templates/users/update.html:189
+#: pialara/templates/users/update.html:309
+msgid "Cambiar Contraseña"
+msgstr ""
+
+#: pialara/templates/users/update.html:194
+#: pialara/templates/users/update.html:314
+msgid "Tamaño de texto"
+msgstr ""
+
+#: pialara/templates/users/update.html:201
+#: pialara/templates/users/update.html:321
+msgid "Texto de ejemplo"
+msgstr ""
+
+#: pialara/templates/users/update.html:209
+#: pialara/templates/users/update.html:329
+msgid "Actualizar"
+msgstr ""
+
+#: pialara/templates/users/update.html:283
+msgid "Entidad / Asociación"
 msgstr ""
 

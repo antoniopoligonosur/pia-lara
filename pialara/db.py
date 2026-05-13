@@ -49,7 +49,8 @@ def get_user_by_id(id):
                            parent=usuario.get("parent"),
                            activo=usuario.get("activo"),
                            racha_actual=usuario.get("racha_actual", 0),
-                           ultima_grabacion=usuario.get("ultima_grabacion"))
+                           ultima_grabacion=usuario.get("ultima_grabacion"),
+                           ultima_rutina=usuario.get("ultima_rutina"))
 													   
 		  
 				
@@ -77,7 +78,8 @@ def get_user(email):
                            font_size=usuario.get("font_size"),
                            activo=usuario.get("activo"),
                            racha_actual=usuario.get("racha_actual", 0),
-                           ultima_grabacion=usuario.get("ultima_grabacion"))
+                           ultima_grabacion=usuario.get("ultima_grabacion"),
+                           ultima_rutina=usuario.get("ultima_rutina"))
 													   
 						 
 				

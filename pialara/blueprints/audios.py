@@ -433,6 +433,13 @@ def save_record():
             is_routine_completed = True
             session.pop('routine_items', None)
             session.pop('routine_index', None)
+            
+            # Actualizamos ultima_rutina en la base de datos
+            usuario.update_one(
+                {"mail": current_user.email},
+                {"$set": {"ultima_rutina": hoy}}
+            )
+            current_user.ultima_rutina = hoy
 
 
     data = {
@@ -755,6 +762,11 @@ def calendario_rachas():
 
     today = datetime.now()
     
+    racha_completada_hoy = False
+    ultima_rutina = getattr(current_user, 'ultima_rutina', None)
+    if ultima_rutina and isinstance(ultima_rutina, datetime) and ultima_rutina.date() == today.date():
+        racha_completada_hoy = True
+    
     return render_template(
         'audios/calendario_rachas.html',
         racha_actual=getattr(current_user, 'racha_actual', 0),
@@ -769,5 +781,6 @@ def calendario_rachas():
         next_year=next_year,
         today_day=today.day,
         today_month=today.month,
-        today_year=today.year
+        today_year=today.year,
+        racha_completada_hoy=racha_completada_hoy
     )

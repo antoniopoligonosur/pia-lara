@@ -79,6 +79,7 @@
 
     <!-- Tarjeta Rutina -->
     <div class="routine-container mb-5">
+        {% if not racha_completada_hoy %}
         <div class="card text-center border-primary shadow-sm w-100" style="background-color: #f8f9fa;">
             <div class="card-body py-4">
                 <h3 class="card-title text-primary fw-bold mb-3"><i class="bi bi-stars text-warning me-2"></i> {{ _('¡Tu Rutina de Hoy!') }}</h3>
@@ -89,6 +90,17 @@
                 </a>
             </div>
         </div>
+        {% else %}
+        <div class="card text-center border-success shadow-sm w-100" style="background-color: #f8fff9;">
+            <div class="card-body py-4">
+                <h3 class="card-title text-success fw-bold mb-3"><i class="bi bi-check-circle-fill text-success me-2"></i> {{ _('¡Racha diaria completada!') }}</h3>
+                <p class="card-text fs-5 mb-4 text-muted">{{ _('Has completado tu entrenamiento de hoy. Vuelve mañana para continuar tu racha.') }}</p>
+                <div class="btn btn-lg btn-success px-5 rounded-pill shadow-sm" style="pointer-events: none; opacity: 0.8;">
+                    <i class="bi bi-check-lg me-2"></i> {{ _('Entrenamiento Completado') }}
+                </div>
+            </div>
+        </div>
+        {% endif %}
     </div>
 </div>
 
